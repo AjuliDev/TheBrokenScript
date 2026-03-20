@@ -1,20 +1,24 @@
-<Project Sdk="Microsoft.NET.Sdk">
-
+﻿<Project Sdk="Microsoft.NET.Sdk">
 	<!-- Import tModLoader mod properties -->
 	<Import Project="..\tModLoader.targets" />
-
-	<!-- General -->
-	<PropertyGroup>
-		
-	</PropertyGroup>
-
+	<!-- Import KBO FXC compiler-->
+	<Import Project="Source\KBOFXC\KBOFXCTask.props"/>
+	<Import Project="Source\KBOFXC\KBOFXCTask.targets"/>
 	<!-- References -->
 	<ItemGroup>
-	  <Folder Include="Common\" />
-	  <Folder Include="Core\" />
-	  <Folder Include="Content\" />
-	  <Folder Include="Source\Libraries\" />
-	  <Folder Include="Utilities\" />
+		<Folder Include="Common\" />
+		<Folder Include="Core\" />
+		<Folder Include="Content\" />
+		<Folder Include="Source\Libraries\" />
+		<Folder Include="Source\KBOFXC\" />
+		<Folder Include="Utilities\" />
+		<Reference Include="StructureHelper">
+			<HintPath>Source\Libraries\StructureHelper.dll</HintPath>
+			<Private>false</Private>
+		</Reference>
+		<Reference Include="SubworldLibrary">
+			<HintPath>Source\Libraries\SubworldLibrary.dll</HintPath>
+			<Private>false</Private>
+		</Reference>
 	</ItemGroup>
-
 </Project>
