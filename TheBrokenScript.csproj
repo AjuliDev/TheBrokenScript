@@ -13,7 +13,7 @@
 	  <Folder Include="Common\" />
 	  <Folder Include="Core\" />
 	  <Folder Include="Content\" />
-	  <Folder Include="Source\" />
+	  <Folder Include="Source\Libraries\" />
 	  <Folder Include="Utilities\" />
 	</ItemGroup>
 
