@@ -2,11 +2,10 @@
 	<!-- Import tModLoader mod properties -->
 	<Import Project="..\tModLoader.targets" />
 	<!-- Import KBO FXC compiler-->
-	<Import Project="Source\KBOFXC\KBOFXCTask.props"/>
-	<Import Project="Source\KBOFXC\KBOFXCTask.targets"/>
+	<Import Project="Source\KBOFXC\KBOFXCTask.props" />
+	<Import Project="Source\KBOFXC\KBOFXCTask.targets" />
 	<!-- References -->
 	<ItemGroup>
-		<Folder Include="Common\" />
 		<Folder Include="Core\" />
 		<Folder Include="Content\" />
 		<Folder Include="Source\Libraries\" />
