@@ -1,4 +1,4 @@
-# The Broken Script ![Static Badge](https://img.shields.io/badge/TModLoader-Mod-brightgreen) ![Steam Downloads](https://img.shields.io/steam/downloads/3626884707) ![Static Badge](https://img.shields.io/badge/work-in%20progress-darkred) ![Static Badge](https://img.shields.io/badge/version-0.23-yellow)
+# The Broken Script Reimagined ![Static Badge](https://img.shields.io/badge/TModLoader-Mod-brightgreen) ![Steam Downloads](https://img.shields.io/steam/downloads/3626884707) ![Static Badge](https://img.shields.io/badge/work-in%20progress-darkred) ![Static Badge](https://img.shields.io/badge/version-0.23-yellow)
 **by AjuliDev** <br/>
 Steam Workshop: https://steamcommunity.com/sharedfiles/filedetails/?id=3626884707
 ### License & Credits
