@@ -7,7 +7,6 @@
 	<!-- References -->
 	<ItemGroup>
 		<Folder Include="Core\" />
-		<Folder Include="Content\" />
 		<Folder Include="Source\Libraries\" />
 		<Folder Include="Source\KBOFXC\" />
 		<Folder Include="Utilities\" />

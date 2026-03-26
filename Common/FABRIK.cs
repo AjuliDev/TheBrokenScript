@@ -1,6 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 namespace TheBrokenScript.Common;
-public class FabrikIK
+public class FABRIK
 {
 	public Vector2[] Joints; // Positions of each joint
 	public float[] Bones; // Length of each bone [Joints[i] -> Joints[i-1]
@@ -8,7 +8,7 @@ public class FabrikIK
 	public Vector2? PoleTarget = null; // Null to disable, affects middle joints
 	public float PoleTargetStrength = 0.5f;
 	// Create an IK Chain from root downwards
-	public FabrikIK(Vector2 rootJoint, int boneCount, int boneLength)
+	public FABRIK(Vector2 rootJoint, int boneCount, int boneLength)
 	{
 		Joints = new Vector2[boneCount + 1];
 		Bones = new float[boneCount];

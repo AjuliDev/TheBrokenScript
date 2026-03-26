@@ -1,3 +1,6 @@
-displayName = The Broken Script
+displayName = The Broken Script Reimagined
+name = TheBrokenScript
 author = AjuliDev
 version = 0.23.0
+buildIgnore = Source/*
+modReferences = StructureHelper, SubworldLibrary
