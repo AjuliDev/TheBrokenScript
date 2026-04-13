@@ -124,7 +124,7 @@ public class Execute : ModNPC
 	{
 		NPC.width = 40;
 		NPC.height = 60;
-		NPC.damage = 1;
+		NPC.damage = 50;
 		NPC.defense = 1;
 		NPC.dontTakeDamage = true;
 		NPC.dontTakeDamageFromHostiles = true;

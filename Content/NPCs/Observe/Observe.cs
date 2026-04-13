@@ -15,7 +15,6 @@ public class Observe : ModNPC
 	private FABRIK[] boneChains;
 	private bool isArmatureReady => boneChains != null;
 	private float headBoneLength, tentacleBoneLength;
-	private float timer = 0f;
 	private Vector2 headRoot, headLeaf;
 	private Vector2[] tentacleRoots, tentacleTargets;
 	private float[] tentaclePhases, tentacleSpeeds;
@@ -111,7 +110,6 @@ public class Observe : ModNPC
 		{
 			SetIKDefaults();
 		}
-		timer++;
 		for (int i = 1; i < 14; i++)
 		{
 			tentaclePhases[i] += tentacleSpeeds[i];
