@@ -1,1 +1,4 @@
-NPCs.Execute.DisplayName: Execute
+NPCs: {
+	Execute.DisplayName: Execute
+	Observe.DisplayName: Observe
+}
