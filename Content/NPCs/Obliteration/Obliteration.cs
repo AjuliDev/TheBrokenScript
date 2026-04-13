@@ -3,7 +3,9 @@ using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
 using System;
 using System.Linq;
+using System.Threading;
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 using TheBrokenScript.Common;
 namespace TheBrokenScript.Content.NPCs.Obliteration;
@@ -16,6 +18,7 @@ public class Obliteration : ModNPC
 	private Vector2[] tentacleRoots, tentacleTargets;
 	private float[] tentaclePhases, tentacleSpeeds;
 	private float tentacleBoneLength, closeTimer;
+	private float timer;
 	public void SetIKDefaults()
 	{
 		boneChains = new FABRIK[31];
@@ -83,6 +86,7 @@ public class Obliteration : ModNPC
 	}
 	public override void AI()
 	{
+		timer++;
 		// Go towards player
 		int closestPlayerID = NPC.FindClosestPlayer();
 		Player closestPlayerInstance = Main.player[closestPlayerID];
@@ -141,6 +145,27 @@ public class Obliteration : ModNPC
 		else
 		{
 			NPC.rotation += 0.01f;
+		}
+
+		// Check Nearby tiles and convert if possible
+		int tileX = (int)(NPC.Center.X / 16f);
+		int tileY = (int)(NPC.Center.Y / 16f);
+		int checkRadius = 5;
+		if (timer % 30 == 0f && Main.netMode != NetmodeID.MultiplayerClient)
+		{
+			for (int x = tileX - checkRadius; x < tileX + checkRadius; x++)
+			{
+				for (int y = tileY - checkRadius; y < tileY + checkRadius; y++)
+				{
+					Tile tile = Framing.GetTileSafely(x, y);
+					if (tile.HasTile && Main.tileSolid[tile.TileType] && tile.TileType != TileID.Obsidian)
+					{
+						WorldGen.PlaceTile(x, y, TileID.Obsidian, forced: true);
+						WorldGen.SquareTileFrame(x, y);
+						NetMessage.SendTileSquare(-1, x, y, 1);
+					}
+				}
+			}
 		}
 	}
 }

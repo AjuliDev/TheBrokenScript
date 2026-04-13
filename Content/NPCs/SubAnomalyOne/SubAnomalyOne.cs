@@ -4,6 +4,7 @@ using ReLogic.Content;
 using System;
 using System.Linq;
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 using TheBrokenScript.Common;
 namespace TheBrokenScript.Content.NPCs.SubAnomalyOne;
@@ -79,6 +80,28 @@ public class SubAnomalyOne : ModNPC
 			NPC.velocity.X = MathHelper.Lerp(NPC.velocity.X, 0f, 0.1f);
 		}
 		Collision.StepUp(ref NPC.position, ref NPC.velocity, NPC.width, NPC.height, ref NPC.stepSpeed, ref NPC.gfxOffY);
+
+		// Check Nearby tiles and convert if possible
+		int tileX = (int)(NPC.Center.X / 16f);
+		int tileY = (int)(NPC.Center.Y / 16f);
+		int checkRadius = 5;
+		if (timer % 30 == 0f && Main.netMode != NetmodeID.MultiplayerClient)
+		{
+			for (int x = tileX - checkRadius; x < tileX + checkRadius; x++)
+			{
+				for (int y = tileY - checkRadius; y < tileY + checkRadius; y++)
+				{
+					Tile tile = Framing.GetTileSafely(x, y);
+					if (tile.LiquidAmount > 0 && tile.LiquidType == LiquidID.Water)
+					{
+						tile.LiquidAmount = 0;
+						WorldGen.PlaceTile(x, y, TileID.Stone, forced: true);
+						WorldGen.SquareTileFrame(x, y);
+						NetMessage.SendTileSquare(-1, x, y, 1);
+					}
+				}
+			}
+		}
 	}
 
 	public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
