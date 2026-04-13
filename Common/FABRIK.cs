@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using System;
 namespace TheBrokenScript.Common;
 public class FABRIK
 {
@@ -8,17 +9,27 @@ public class FABRIK
 	public Vector2? PoleTarget = null; // Null to disable, affects middle joints
 	public float PoleTargetStrength = 0.5f;
 	// Create an IK Chain from root downwards
-	public FABRIK(Vector2 rootJoint, int boneCount, int boneLength)
+	public FABRIK(Vector2 rootJoint, int boneCount, float[] boneLengths)
 	{
+		if (boneLengths.Length != boneCount)
+		{
+			throw new ArgumentException("boneLengths must have exactly boneCount elements.");
+		}
 		Joints = new Vector2[boneCount + 1];
 		Bones = new float[boneCount];
-		for (int i = 0; i <= boneCount; i++)
-		{
-			Joints[i] = rootJoint + new Vector2(0, i * boneLength);
-		}
+		Joints[0] = rootJoint;
 		for (int i = 0; i < boneCount; i++)
 		{
-			Bones[i] = boneLength;
+			Joints[i + 1] = Joints[i] + new Vector2(0, boneLengths[i]);
+			Bones[i] = boneLengths[i];
+		}
+	}
+	public void Rebase(Vector2 newRoot)
+	{
+		Vector2 delta = newRoot - Joints[0];
+		for (int i = 0; i < Joints.Length; i++)
+		{
+			Joints[i] += delta;
 		}
 	}
 	// Solve the IK Chain twice, once from tip to root then from root to tip to make sure the root is fixed to the body
@@ -29,7 +40,7 @@ public class FABRIK
 		{
 			totalLength += length;
 		}
-		// If the target is unreachable, stretch
+		// If the target is unreachable, stretch (clamping totalLength won't work as I think btw)
 		if (Vector2.Distance(root, targetLocation) >= totalLength)
 		{
 			StretchToward(root, targetLocation);
@@ -59,6 +70,7 @@ public class FABRIK
 		{
 			ApplyPoleTarget();
 		}
+		ApplyPoleTarget2Bone();
 	}
 	private void ApplyPoleTarget() //For each interior joint, project on the root->tip line and blend towards PoleTarget while preserving Bone Lengths.
 	{
@@ -84,7 +96,7 @@ public class FABRIK
 			if (distanceToPole < 0.001f) { continue; }
 			directionToPole /= distanceToPole; // normalize to unit vector
 											   // Push "knee" towards the pole by PoleTargetStrength multiplier
-			Vector2 poleInfluencedPosition = closestPointOnLine + directionToPole * distanceToPole * PoleTargetStrength;
+			Vector2 poleInfluencedPosition = closestPointOnLine + directionToPole * PoleTargetStrength * Bones[i - 1];
 			// Reconstrain bone lengths after the PoleTarget is applied
 			Vector2 directionFromPrev = Vector2.Normalize(poleInfluencedPosition - prevJoint);
 			Joints[i] = prevJoint + directionFromPrev * Bones[i - 1];
@@ -93,6 +105,39 @@ public class FABRIK
 			Joints[i + 1] = Joints[i] + directionFromKnee * Bones[i];
 			// I need to become better at math ngl
 		}
+	}
+	private void ApplyPoleTarget2Bone()
+	{
+		if (!PoleTarget.HasValue || BoneCount != 2) return;
+
+		Vector2 root = Joints[0];
+		Vector2 tip = Joints[2];
+		Vector2 pole = PoleTarget.Value;
+
+		float a = Bones[0]; // upper bone
+		float b = Bones[1]; // lower bone
+		float dist = Vector2.Distance(root, tip);
+		if (dist < 0.001f) return;
+
+		// Law of cosines to find the angle at the root
+		float cosAngle = (a * a + dist * dist - b * b) / (2 * a * dist);
+		cosAngle = Math.Clamp(cosAngle, -1f, 1f);
+		float angle = MathF.Acos(cosAngle);
+
+		// Project pole onto the plane perpendicular to root->tip
+		Vector2 rootToTip = Vector2.Normalize(tip - root);
+		Vector2 rootToPole = pole - root;
+		float proj = Vector2.Dot(rootToPole, rootToTip);
+		Vector2 polePerp = rootToPole - rootToTip * proj;
+		float perpLen = polePerp.Length();
+		if (perpLen < 0.001f) return;
+		Vector2 bendDir = polePerp / perpLen;
+
+		// Place knee using the angle and bend direction
+		Joints[1] = root + (rootToTip * MathF.Cos(angle) + bendDir * MathF.Sin(angle)) * a;
+		// Reconstrain tip
+		Vector2 kneeToTip = Vector2.Normalize(tip - Joints[1]);
+		Joints[2] = Joints[1] + kneeToTip * b;
 	}
 	private void StretchToward(Vector2 root, Vector2 target)
 	{
