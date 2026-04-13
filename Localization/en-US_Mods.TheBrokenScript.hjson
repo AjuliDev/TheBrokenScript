@@ -2,4 +2,5 @@ NPCs: {
 	Execute.DisplayName: Execute
 	Observe.DisplayName: Observe
 	SubAnomalyOne.DisplayName: Sub Anomaly One
+	Obliteration.DisplayName: Obliteration
 }
