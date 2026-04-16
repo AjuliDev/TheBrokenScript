@@ -82,14 +82,14 @@ public class SubAnomalyOne : ModNPC
 		Collision.StepUp(ref NPC.position, ref NPC.velocity, NPC.width, NPC.height, ref NPC.stepSpeed, ref NPC.gfxOffY);
 
 		// Check Nearby tiles and convert if possible
-		int tileX = (int)(NPC.Center.X / 16f);
-		int tileY = (int)(NPC.Center.Y / 16f);
-		int checkRadius = 5;
+		int tileX = (int)(NPC.Bottom.X / 16f);
+		int tileY = (int)(NPC.Bottom.Y / 16f);
+		int checkRadius = 2;
 		if (timer % 30 == 0f && Main.netMode != NetmodeID.MultiplayerClient)
 		{
 			for (int x = tileX - checkRadius; x < tileX + checkRadius; x++)
 			{
-				for (int y = tileY - checkRadius; y < tileY + checkRadius; y++)
+				for (int y = tileY; y < tileY + checkRadius; y++)
 				{
 					Tile tile = Framing.GetTileSafely(x, y);
 					if (tile.LiquidAmount > 0 && tile.LiquidType == LiquidID.Water)

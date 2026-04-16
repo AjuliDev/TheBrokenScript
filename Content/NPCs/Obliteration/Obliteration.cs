@@ -104,6 +104,7 @@ public class Obliteration : ModNPC
 			}
 			else
 			{
+				NPC.noTileCollide = true;
 				NPC.velocity.X = MathHelper.Lerp(NPC.velocity.X, NPC.Center.X - closestPlayerInstance.Center.X > 0 ? 4f : -4f, 0.05f);
 				NPC.velocity.Y = MathHelper.Lerp(NPC.velocity.Y, -6f, 0.05f);
 				if (distanceToPlayer > 16f * 50f)
