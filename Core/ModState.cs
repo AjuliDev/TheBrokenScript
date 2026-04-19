@@ -1,5 +1,7 @@
 ﻿using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.ModLoader.IO;
 namespace TheBrokenScript.Core;
 public class ModState : ModSystem
 {
@@ -16,7 +18,7 @@ public class ModState : ModSystem
 		NewWorld,
 		Awakening,
 		Corrupted,
-		Postponed
+		Postponed // Not used yet, to be used at endgame
 	}
 	/// <summary>
 	/// The state of the moon. <br/>
@@ -49,9 +51,10 @@ public class ModState : ModSystem
 	}
 	#endregion Definitions
 	#region Mechanics
-	private WorldData worldData;
+	private static WorldData worldData;
+	public static WorldData GetWorldData() => worldData;
 	private bool nightCounted;
-	public override void SetStaticDefaults()
+	public override void OnWorldLoad()
 	{
 		worldData.Timings.NightsUntilCorrupted = 3;
 		worldData.WorldState = WorldState.NewWorld;
@@ -63,32 +66,50 @@ public class ModState : ModSystem
 	}
 	public override void PostUpdateTime()
 	{
+		if (Main.netMode == NetmodeID.MultiplayerClient)
+		{
+			return;
+		}
 		if (NPC.downedBoss3 && worldData.WorldState == WorldState.NewWorld)
 		{
 			worldData.WorldState = WorldState.Awakening;
-		} else if (worldData.WorldState >= WorldState.Awakening && worldData.Timings.TotalNightsPassed >= worldData.Timings.NightsUntilCorrupted)
-		{
-			worldData.WorldState = WorldState.Corrupted;
 		} else if (worldData.WorldState >= WorldState.Awakening)
 		{
+			if (worldData.Timings.TotalNightsPassed >= worldData.Timings.NightsUntilCorrupted)
+			{
+				worldData.WorldState = WorldState.Corrupted;
+			}
 			if (!nightCounted && !Main.IsItDay())
 			{
 				nightCounted = true;
+			}
+			if (nightCounted && Main.IsItDay())
+			{
+				nightCounted = false;
 				worldData.Timings.TotalNightsPassed += 1;
 				if (worldData.WorldState == WorldState.Corrupted)
 				{
 					worldData.MoonData.CorruptedSequenceID += 1;
 					if (worldData.MoonData.CorruptedSequenceID % worldData.MoonData.SequenceTotalIndexes == 0)
 					{
+						// Skips the first 40 moons (infecting) once the first cycle is done.
 						worldData.MoonData.CorruptedSequenceID = 40;
 					}
 				}
 			}
-			if (nightCounted && Main.IsItDay())
-			{
-				nightCounted = false;
-			}
 		}
+	}
+	public override void SaveWorldData(TagCompound tag)
+	{
+		tag["TBS_TotalNightsPassed"] = worldData.Timings.TotalNightsPassed;
+		tag["TBS_CorruptedSequenceID"] = worldData.MoonData.CorruptedSequenceID;
+		tag["TBS_WorldState"] = (int)worldData.WorldState;
+	}
+	public override void LoadWorldData(TagCompound tag)
+	{
+		worldData.Timings.TotalNightsPassed = tag.ContainsKey("TBS_TotalNightsPassed") ? tag.GetInt("TBS_TotalNightsPassed") : 0;
+		worldData.MoonData.CorruptedSequenceID = tag.ContainsKey("TBS_CorruptedSequenceID") ? tag.GetInt("TBS_CorruptedSequenceID") : 0;
+		worldData.WorldState = tag.ContainsKey("TBS_WorldState") ? (WorldState)tag.GetInt("TBS_WorldState") : WorldState.NewWorld;
 	}
 	#endregion Mechanics
 }
