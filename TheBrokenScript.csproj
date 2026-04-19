@@ -6,6 +6,8 @@
 	<Import Project="Source\KBOFXC\KBOFXCTask.targets" />
 	<!-- References -->
 	<ItemGroup>
+		<Folder Include="Common\Effects\" />
+		<Folder Include="Common\Sounds\" />
 		<Folder Include="Common\Textures\Moon\" />
 		<Folder Include="Source\Libraries\" />
 		<Folder Include="Source\KBOFXC\" />
