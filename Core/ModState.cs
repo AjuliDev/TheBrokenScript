@@ -36,6 +36,7 @@ public class ModState : ModSystem
 	{
 		public MoonPhase MoonPhase;
 		public int CorruptedSequenceID;
+		public int RandomCorruptedID;
 		public int SequenceTotalIndexes;
 	}
 	public struct Timings
@@ -61,7 +62,7 @@ public class ModState : ModSystem
 		worldData.Timings.TotalNightsPassed = 0;
 		worldData.MoonData.MoonPhase = MoonPhase.Normal;
 		worldData.MoonData.CorruptedSequenceID = 0;
-		worldData.MoonData.SequenceTotalIndexes = 50;
+		worldData.MoonData.SequenceTotalIndexes = 49;
 		nightCounted = false;
 	}
 	public override void PostUpdateTime()
@@ -89,11 +90,20 @@ public class ModState : ModSystem
 				worldData.Timings.TotalNightsPassed += 1;
 				if (worldData.WorldState == WorldState.Corrupted)
 				{
-					worldData.MoonData.CorruptedSequenceID += 1;
-					if (worldData.MoonData.CorruptedSequenceID % worldData.MoonData.SequenceTotalIndexes == 0)
+					if (Main.rand.NextBool(10))
 					{
-						// Skips the first 40 moons (infecting) once the first cycle is done.
-						worldData.MoonData.CorruptedSequenceID = 40;
+						worldData.MoonData.MoonPhase = MoonPhase.CorruptedRandom;
+						worldData.MoonData.RandomCorruptedID = Main.rand.Next(0, 49);
+					}
+					else
+					{
+						worldData.MoonData.MoonPhase = MoonPhase.CorruptedSequence;
+						worldData.MoonData.CorruptedSequenceID += 1;
+						if (worldData.MoonData.CorruptedSequenceID % worldData.MoonData.SequenceTotalIndexes == 0)
+						{
+							// Skips the first 40 moons (infecting) once the first cycle is done.
+							worldData.MoonData.CorruptedSequenceID = 39;
+						}
 					}
 				}
 			}
@@ -103,13 +113,17 @@ public class ModState : ModSystem
 	{
 		tag["TBS_TotalNightsPassed"] = worldData.Timings.TotalNightsPassed;
 		tag["TBS_CorruptedSequenceID"] = worldData.MoonData.CorruptedSequenceID;
+		tag["TBS_RandCorruptedID"] = worldData.MoonData.RandomCorruptedID;
 		tag["TBS_WorldState"] = (int)worldData.WorldState;
+		tag["TBS_MoonPhase"] = (int)worldData.MoonData.MoonPhase;
 	}
 	public override void LoadWorldData(TagCompound tag)
 	{
 		worldData.Timings.TotalNightsPassed = tag.ContainsKey("TBS_TotalNightsPassed") ? tag.GetInt("TBS_TotalNightsPassed") : 0;
 		worldData.MoonData.CorruptedSequenceID = tag.ContainsKey("TBS_CorruptedSequenceID") ? tag.GetInt("TBS_CorruptedSequenceID") : 0;
+		worldData.MoonData.RandomCorruptedID = tag.ContainsKey("TBS_RandCorruptedID") ? tag.GetInt("TBS_RandCorruptedID") : 0;
 		worldData.WorldState = tag.ContainsKey("TBS_WorldState") ? (WorldState)tag.GetInt("TBS_WorldState") : WorldState.NewWorld;
+		worldData.MoonData.MoonPhase = tag.ContainsKey("TBS_MoonPhase") ? (MoonPhase)tag.GetInt("TBS_MoonPhase") : MoonPhase.Normal;
 	}
 	#endregion Mechanics
 }
