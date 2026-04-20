@@ -104,7 +104,7 @@ public class ModState : ModSystem
 						worldData.MoonData.MoonPhase = MoonPhase.CorruptedRandom;
 						worldData.MoonData.RandomCorruptedID = Main.rand.Next(0, 49);
 					}
-					else
+					else if (Main.rand.NextBool(2))
 					{
 						worldData.MoonData.MoonPhase = MoonPhase.CorruptedSequence;
 						worldData.MoonData.CorruptedSequenceID += 1;
@@ -114,11 +114,17 @@ public class ModState : ModSystem
 							worldData.MoonData.CorruptedSequenceID = 39;
 						}
 					}
+					else
+					{
+						worldData.MoonData.MoonPhase = MoonPhase.Normal;
+					}
 				}
 			}
 		}
-
-		ServerBroadcastData();
+		if (Main.netMode == NetmodeID.Server && Main.GameUpdateCount % 60 == 0)
+		{
+			ServerBroadcastData(); // 21 bytes per second per client + whatever tml may add
+		}
 	}
 	public override void SaveWorldData(TagCompound tag)
 	{
