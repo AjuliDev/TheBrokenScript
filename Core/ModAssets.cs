@@ -22,19 +22,21 @@ public class ModAssets : ModSystem
 		{
 			foreach (string file in Mod.GetFileNames())
 			{
+				Mod.Logger.Info($"File: '{file}'");
 				if (!AssetPaths.Any(folder => file.StartsWith(folder)))
 					continue;
 				string assetPath = file[..file.LastIndexOf('.')];
-				if (file.EndsWith(".png"))
+				string keyName = assetPath.Split('/').Last();
+				if (file.EndsWith(".rawimg"))
 				{
-					Textures[assetPath] = ModContent.Request<Texture2D>($"{Mod.Name}/{assetPath}", AssetRequestMode.ImmediateLoad);
+					Textures[keyName] = ModContent.Request<Texture2D>($"{Mod.Name}/{assetPath}", AssetRequestMode.ImmediateLoad);
 				} else if (file.EndsWith(".wav") || file.EndsWith(".ogg"))
 				{
-					Sounds[assetPath] = ModContent.Request<SoundEffect>($"{Mod.Name}/{assetPath}", AssetRequestMode.ImmediateLoad);
+					Sounds[keyName] = ModContent.Request<SoundEffect>($"{Mod.Name}/{assetPath}", AssetRequestMode.ImmediateLoad);
 				}
 				else if (file.EndsWith(".fxc"))
 				{
-					ShaderEffects[assetPath] = ModContent.Request<Effect>($"{Mod.Name}/{assetPath}", AssetRequestMode.ImmediateLoad);
+					ShaderEffects[keyName] = ModContent.Request<Effect>($"{Mod.Name}/{assetPath}", AssetRequestMode.ImmediateLoad);
 				}
 			}
 		}

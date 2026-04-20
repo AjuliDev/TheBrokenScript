@@ -57,6 +57,14 @@ public class ModState : ModSystem
 	private bool nightCounted;
 	public override void OnWorldLoad()
 	{
+		ResetWorldData();
+	}
+	public override void OnWorldUnload()
+	{
+		ResetWorldData();
+	}
+	private void ResetWorldData()
+	{
 		worldData.Timings.NightsUntilCorrupted = 3;
 		worldData.WorldState = WorldState.NewWorld;
 		worldData.Timings.TotalNightsPassed = 0;
