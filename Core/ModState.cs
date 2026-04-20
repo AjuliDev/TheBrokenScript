@@ -1,4 +1,5 @@
-﻿using Terraria;
+﻿using System.IO;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
@@ -116,6 +117,8 @@ public class ModState : ModSystem
 				}
 			}
 		}
+
+		ServerBroadcastData();
 	}
 	public override void SaveWorldData(TagCompound tag)
 	{
@@ -134,4 +137,33 @@ public class ModState : ModSystem
 		worldData.MoonData.MoonPhase = tag.ContainsKey("TBS_MoonPhase") ? (MoonPhase)tag.GetInt("TBS_MoonPhase") : MoonPhase.Normal;
 	}
 	#endregion Mechanics
+	#region MultiplayerSync
+	public static void ServerBroadcastData()
+	{
+		if (Main.netMode != NetmodeID.Server)
+		{
+			return;
+		}
+		ModPacket packet = ModContent.GetInstance<TheBrokenScript>().GetPacket();
+		packet.Write((byte)ModPacketHandler.PacketType.SyncWorldData);
+		packet.Write((int)worldData.WorldState);
+		packet.Write(worldData.MoonData.RandomCorruptedID);
+		packet.Write(worldData.MoonData.CorruptedSequenceID);
+		packet.Write((int)worldData.MoonData.MoonPhase);
+		packet.Write(worldData.Timings.TotalNightsPassed);
+		packet.Send(-1, -1);
+	}
+	public static void ClientReceiver(BinaryReader reader)
+	{
+		if (Main.netMode != NetmodeID.MultiplayerClient)
+		{
+			return;
+		}
+		worldData.WorldState = (WorldState)reader.ReadInt32();
+		worldData.MoonData.RandomCorruptedID = reader.ReadInt32();
+		worldData.MoonData.CorruptedSequenceID = reader.ReadInt32();
+		worldData.MoonData.MoonPhase = (MoonPhase)reader.ReadInt32();
+		worldData.Timings.TotalNightsPassed = reader.ReadInt32();
+	}
+	#endregion MultiplayerSync
 }
