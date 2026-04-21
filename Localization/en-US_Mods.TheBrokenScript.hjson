@@ -4,3 +4,28 @@ NPCs: {
 	SubAnomalyOne.DisplayName: Sub Anomaly One
 	Obliteration.DisplayName: Obliteration
 }
+
+Configs: {
+	ClientConfig.DisplayName: Client Config
+
+	ServerConfig: {
+		DisplayName: Server Config
+
+		MinimumRandomEventCooldown: {
+			Label: Minimum Random Event Cooldown
+			Tooltip: ""
+		}
+
+		Headers.Events: EVENTS
+
+		MaximumRandomEventCooldown: {
+			Label: Maximum Random Event Cooldown
+			Tooltip: ""
+		}
+
+		DisableRandomEvents: {
+			Label: Disable Random Events
+			Tooltip: ""
+		}
+	}
+}
