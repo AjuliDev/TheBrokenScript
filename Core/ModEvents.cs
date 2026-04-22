@@ -1,6 +1,9 @@
-﻿using System;
+﻿using Microsoft.Xna.Framework;
+using System;
 using Terraria;
+using Terraria.Chat;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using TheBrokenScript.Content.Events;
 namespace TheBrokenScript.Core;
@@ -14,6 +17,8 @@ public class ModEvents : ModSystem
 		{
 			return;
 		}
+		//ChatHelper.BroadcastChatMessage(NetworkText.FromFormattable($"{randEventTimer} out of {randEventTargetTime}"), color: Color.White, -1);
+		//Main.NewText($"{randEventTimer} out of {randEventTargetTime}");
 		if (++randEventTimer < randEventTargetTime)
 		{
 			return;
@@ -24,6 +29,10 @@ public class ModEvents : ModSystem
 	private void TriggerRandom()
 	{
 		var config = ServerConfig.Instance;
+		if (config == null)
+		{
+			return;
+		}
 		if (config.DisableRandomEvents)
 		{
 			return;
@@ -38,6 +47,10 @@ public class ModEvents : ModSystem
 	public static void TriggerEvent(IModEvent modEvent)
 	{
 		var config = ServerConfig.Instance;
+		if (config == null)
+		{
+			return;
+		}
 		if (!modEvent.IsEnabled(config))
 		{
 			return;
@@ -47,6 +60,10 @@ public class ModEvents : ModSystem
 	private void ResetTimer()
 	{
 		var config = ServerConfig.Instance;
+		if (config == null)
+		{
+			return;
+		}
 		// 60 ticks (second) * 60 * ...
 		int min = 60 * 60 * config.MinimumRandomEventCooldown;
 		int max = 60 * 60 * config.MaximumRandomEventCooldown;

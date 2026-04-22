@@ -30,5 +30,8 @@ namespace TheBrokenScript.Core
 		[Range(1, 100)]
 		[DefaultValue(5)]
 		public int MaximumRandomEventCooldown { get; set; }
+		[BackgroundColor(169, 40, 212, 255)]
+		[DefaultValue(true)]
+		public bool Event_GiftChest { get; set; }
 	}
 }

@@ -27,5 +27,10 @@ Configs: {
 			Label: Disable Random Events
 			Tooltip: ""
 		}
+
+		Event_GiftChest: {
+			Label: Event_ Gift Chest
+			Tooltip: ""
+		}
 	}
 }

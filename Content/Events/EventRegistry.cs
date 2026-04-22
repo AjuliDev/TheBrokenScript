@@ -7,6 +7,7 @@ public static class EventRegistry
 	public static readonly List<IModEvent> All = new()
 	{
 		// Events go here
+		new Event_GiftChest(),
 	};
 	public static List<IModEvent> GetEnabled(ServerConfig config) => All.Where(e => e.IsEnabled(config)).ToList();
 }
