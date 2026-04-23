@@ -13,6 +13,7 @@ public class ModAssets : ModSystem
 	public static Dictionary<string, Asset<Effect>> ShaderEffects { get; private set; } = new();
 	private static readonly string[] AssetPaths = [
 		"Common/Textures",
+		"Content/Scenes",
 		"Common/Sounds",
 		"Common/Effects",
 		];

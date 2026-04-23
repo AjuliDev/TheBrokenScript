@@ -14,6 +14,13 @@ public class IKHelper
 			Terraria.Tile tile = Terraria.Main.tile[(int)(x_row / 16), (int)i];
 			if (tile.HasTile && tile.HasUnactuatedTile)
 			{
+				if (tile.TileType == Terraria.ID.TileID.Trees ||
+					tile.TileType == Terraria.ID.TileID.PalmTree ||
+					tile.TileType == Terraria.ID.TileID.ChristmasTree ||
+					tile.TileType == Terraria.ID.TileID.Cactus)
+				{
+					continue;
+				}
 				if (tile.IsHalfBlock)
 				{
 					return i * 16f + 8f;
