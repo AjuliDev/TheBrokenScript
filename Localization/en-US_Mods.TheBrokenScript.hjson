@@ -29,7 +29,7 @@ Configs: {
 		}
 
 		Event_GiftChest: {
-			Label: Event_ Gift Chest
+			Label: Gift a random player a chest of things
 			Tooltip: ""
 		}
 	}

@@ -16,6 +16,25 @@ public class Event_GiftChest : IModEvent
 		}
 		SpawnChestNearPlayer(activePlayers[Main.rand.Next(activePlayers.Count)]);
 	}
+	private int[] itemDropPool = [
+		ItemID.GoldBar,
+		ItemID.LeadBar,
+		ItemID.IronBar,
+		ItemID.CopperBar,
+		ItemID.MeteoriteBar,
+		ItemID.TungstenBar,
+		ItemID.GoldCoin,
+		ItemID.UnholyArrow,
+		ItemID.HolyArrow,
+		ItemID.Beenade,
+		ItemID.PoopBlock,
+		ItemID.SandBlock,
+		ItemID.DirtBlock,
+		ItemID.MudBlock,
+		ItemID.StoneBlock,
+		ItemID.AshWood,
+		ItemID.ClayBlock
+		];
 	private void SpawnChestNearPlayer(Player player)
 	{
 		int playerTileX = (int)(player.position.X / 16);
@@ -35,7 +54,7 @@ public class Event_GiftChest : IModEvent
 				continue;
 			}
 			Chest chest = Main.chest[chestIndex];
-			chest.item[0].SetDefaults(ItemID.GoldBar);
+			chest.item[0].SetDefaults(itemDropPool[Main.rand.Next(0, itemDropPool.Length)]);
 			chest.item[0].stack = Main.rand.Next(10, 21);
 			if (Main.netMode == NetmodeID.Server)
 			{
