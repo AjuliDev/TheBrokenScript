@@ -3,6 +3,7 @@ NPCs: {
 	Observe.DisplayName: Observe
 	SubAnomalyOne.DisplayName: Sub Anomaly One
 	Obliteration.DisplayName: Obliteration
+	SiluetR2.DisplayName: Siluet R2
 }
 
 Configs: {
