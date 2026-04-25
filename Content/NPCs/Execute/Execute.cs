@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
 using System;
+using System.IO;
 using Terraria;
 using Terraria.ModLoader;
 namespace TheBrokenScript.Content.NPCs.Execute;
@@ -20,7 +21,7 @@ public class Execute : ModNPC
 		RightSet,
 		None
 	}
-	private PlantedLimb plantedArm = PlantedLimb.None;
+	//private PlantedLimb plantedArm = PlantedLimb.None; -- Unused, at least for now.
 	private PlantedLimb plantedLeg = PlantedLimb.None;
 	private float stepDistance = 64f;
 	private float sineMovement = 0f;
@@ -384,5 +385,17 @@ public class Execute : ModNPC
 			rightLegLeaf = new Vector2(rightLegLeafX, rightLegLeafY);
 			//Armature.BoneChains[5].PoleTargetStrength = 0f;
 		}
+	}
+	public override void SendExtraAI(BinaryWriter writer)
+	{
+		writer.Write(leftArmLeaf.X);
+		writer.Write(leftArmLeaf.Y);
+		writer.Write(rightArmLeaf.X);
+		writer.Write(rightArmLeaf.Y);
+	}
+	public override void ReceiveExtraAI(BinaryReader reader)
+	{
+		leftArmLeaf = new Vector2(reader.ReadSingle(), reader.ReadSingle());
+		rightArmLeaf = new Vector2(reader.ReadSingle(), reader.ReadSingle());
 	}
 }
