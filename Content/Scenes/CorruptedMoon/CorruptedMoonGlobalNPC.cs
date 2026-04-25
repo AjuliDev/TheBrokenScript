@@ -11,11 +11,11 @@ public class CorruptedMoonGlobalNPC : GlobalNPC
 		if (worldData.MoonData.MoonPhase != ModState.MoonPhase.Normal && !Main.IsItDay())
 		{
 			pool.Clear();
-			//pool[ModContent.NPCType<NPCs.Execute.Execute>()] = 0.05f;
-			//pool[ModContent.NPCType<NPCs.Observe.Observe>()] = 0.05f;
-			pool[ModContent.NPCType<NPCs.SubAnomalyOne.SubAnomalyOne>()] = 0.05f;
-			pool[ModContent.NPCType<NPCs.SiluetR2.SiluetR2>()] = 0.05f;
-			//pool[ModContent.NPCType<NPCs.Obliteration.Obliteration>()] = 0.05f;
+			pool[ModContent.NPCType<NPCs.Execute.Execute>()] = 0.05f;
+			pool[ModContent.NPCType<NPCs.Observe.Observe>()] = 0.025f;
+			pool[ModContent.NPCType<NPCs.SubAnomalyOne.SubAnomalyOne>()] = 0.10f;
+			pool[ModContent.NPCType<NPCs.SiluetR2.SiluetR2>()] = 0.10f;
+			pool[ModContent.NPCType<NPCs.Obliteration.Obliteration>()] = 0.025f;
 		}
 	}
 	public override void EditSpawnRate(Player player, ref int spawnRate, ref int maxSpawns)
@@ -23,7 +23,7 @@ public class CorruptedMoonGlobalNPC : GlobalNPC
 		var worldData = ModState.GetWorldData();
 		if (worldData.MoonData.MoonPhase != ModState.MoonPhase.Normal && !Main.IsItDay())
 		{
-			spawnRate = 60;
+			spawnRate = 600;
 			maxSpawns = 2;
 		}
 	}
