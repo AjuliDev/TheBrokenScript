@@ -29,7 +29,7 @@ public class SubAnomalyOne : ModNPC
 	{
 		NPC.width = 40;
 		NPC.height = 40;
-		NPC.damage = 1000;
+		NPC.damage = 20;
 		NPC.defense = 1;
 		NPC.dontTakeDamage = true;
 		NPC.dontTakeDamageFromHostiles = true;
