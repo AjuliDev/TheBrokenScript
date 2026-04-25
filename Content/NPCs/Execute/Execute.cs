@@ -126,9 +126,9 @@ public class Execute : ModNPC
 		NPC.height = 60;
 		NPC.damage = 50;
 		NPC.defense = 1;
-		NPC.dontTakeDamage = true;
+		NPC.dontTakeDamage = false;
 		NPC.dontTakeDamageFromHostiles = true;
-		NPC.lifeMax = 600;
+		NPC.lifeMax = 6600;
 		NPC.aiStyle = -1;
 		NPC.noGravity = true;
 		NPC.noTileCollide = false;
