@@ -152,5 +152,12 @@ public class Observe : ModNPC
 				}
 			}
 		}
+		if (Main.IsItDay() && Main.netMode != NetmodeID.MultiplayerClient)
+		{
+			NPC.life = 0;
+			NPC.HitEffect();
+			NPC.active = false;
+			NetMessage.SendData(MessageID.SyncNPC, -1, -1, null, NPC.whoAmI);
+		}
 	}
 }
