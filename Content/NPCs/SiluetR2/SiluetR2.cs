@@ -4,6 +4,7 @@ using ReLogic.Content;
 using System;
 using Terraria;
 using Terraria.ModLoader;
+using TheBrokenScript.Common;
 namespace TheBrokenScript.Content.NPCs.SiluetR2;
 public class SiluetR2 : ModNPC
 {
@@ -34,6 +35,7 @@ public class SiluetR2 : ModNPC
 		NPC.ShowNameOnHover = false;
 		NPC.knockBackResist = 0;
 		NPC.lavaImmune = false;
+		NPC.ai[0] = 0f;
 	}
 	public override void AI()
 	{
@@ -59,14 +61,36 @@ public class SiluetR2 : ModNPC
 		float distanceToPlayer = NPC.Center.X - closestPlayerInstance.Center.X;
 		if (Math.Abs(distanceToPlayer) > 32f)
 		{
-			NPC.velocity.X = distanceToPlayer > 0 ?
-				MathHelper.Lerp(NPC.velocity.X, -1.0f, 0.1f) :
-				MathHelper.Lerp(NPC.velocity.X, 1.0f, 0.1f);
+			if (NPC.ai[0] == 1f)
+			{
+				NPC.velocity.X = distanceToPlayer > 0 ?
+					MathHelper.Lerp(NPC.velocity.X, -3.5f, 0.1f) :
+					MathHelper.Lerp(NPC.velocity.X, 3.5f, 0.1f);
+			}
+			else if (NPC.ai[0] == 0f)
+			{
+				NPC.velocity.X = distanceToPlayer > 0 ?
+					MathHelper.Lerp(NPC.velocity.X, -1.0f, 0.1f) :
+					MathHelper.Lerp(NPC.velocity.X, 1.0f, 0.1f);
+			}
 			NPC.spriteDirection = distanceToPlayer > 0 ? -1 : 1;
 		}
 		else
 		{
 			NPC.velocity.X = MathHelper.Lerp(NPC.velocity.X, 0f, 0.1f);
+		}
+		if (Math.Abs(distanceToPlayer) < (16f * 20f))
+		{
+			if (NPC.ai[0] != 1f)
+			{
+				NPC.ai[0] = 1f;
+			}
+		}
+		if (NPC.ai[0] == 1f)
+		{
+			float distance = Vector2.Distance(Main.LocalPlayer.Center, NPC.Center);
+			Vector2 target = distance < 16f * 20f ? NPC.Center : Main.LocalPlayer.Center;
+			Main.instance.CameraModifiers.Add(new CameraSnapTo(target, FullName, () => !NPC.active));
 		}
 		Collision.StepUp(ref NPC.position, ref NPC.velocity, NPC.width, NPC.height, ref NPC.stepSpeed, ref NPC.gfxOffY);
 	}
