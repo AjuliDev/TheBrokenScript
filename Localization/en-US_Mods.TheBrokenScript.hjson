@@ -4,6 +4,7 @@ NPCs: {
 	SubAnomalyOne.DisplayName: Sub Anomaly One
 	Obliteration.DisplayName: Obliteration
 	SiluetR2.DisplayName: Siluet R2
+	Follow.DisplayName: Follow
 }
 
 Configs: {
