@@ -16,6 +16,7 @@ public class CorruptedMoonGlobalNPC : GlobalNPC
 			pool[ModContent.NPCType<NPCs.SubAnomalyOne.SubAnomalyOne>()] = 0.10f;
 			pool[ModContent.NPCType<NPCs.SiluetR2.SiluetR2>()] = 0.10f;
 			pool[ModContent.NPCType<NPCs.Obliteration.Obliteration>()] = 0.025f;
+			pool[ModContent.NPCType<NPCs.Follow.Follow>()] = 0.05f;
 		}
 	}
 	public override void EditSpawnRate(Player player, ref int spawnRate, ref int maxSpawns)
