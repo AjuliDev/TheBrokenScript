@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Terraria;
 namespace TheBrokenScript.Common;
 public class IKHelper
 {
@@ -14,10 +15,7 @@ public class IKHelper
 			Terraria.Tile tile = Terraria.Main.tile[(int)(x_row / 16), (int)i];
 			if (tile.HasTile && tile.HasUnactuatedTile)
 			{
-				if (tile.TileType == Terraria.ID.TileID.Trees ||
-					tile.TileType == Terraria.ID.TileID.PalmTree ||
-					tile.TileType == Terraria.ID.TileID.ChristmasTree ||
-					tile.TileType == Terraria.ID.TileID.Cactus)
+				if (!Main.tileSolid[tile.TileType])
 				{
 					continue;
 				}
