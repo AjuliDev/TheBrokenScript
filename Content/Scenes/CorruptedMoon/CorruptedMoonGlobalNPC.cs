@@ -25,7 +25,7 @@ public class CorruptedMoonGlobalNPC : GlobalNPC
 		var worldData = ModState.GetWorldData();
 		if (worldData.MoonData.MoonPhase != ModState.MoonPhase.Normal && !Main.IsItDay())
 		{
-			spawnRate = 600;
+			spawnRate = 1200;
 			maxSpawns = 10;
 		}
 	}
