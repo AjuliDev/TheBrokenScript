@@ -18,6 +18,8 @@ public class Possessor : ModNPC
 	private ref float aiTimer => ref NPC.ai[3];
 	private const int SEARCH_RADIUS = 50; // Tiles
 	private const int SEARCH_COOLDOWN = 60;
+	private const int EXPIRY = 15 * 60; // Seconds
+	private int expiryTimer;
 	public override void Load()
 	{
 		Textures = new Asset<Texture2D>[2];
@@ -47,6 +49,15 @@ public class Possessor : ModNPC
 	}
 	public override void AI()
 	{
+		if (Main.netMode != NetmodeID.MultiplayerClient)
+		{
+			expiryTimer++;
+			if (expiryTimer >= EXPIRY)
+			{
+				NPC.active = false;
+			}
+		}
+
 		for (int i = 0; i < Main.maxNPCs; i++)
 		{
 			NPC otherNPC = Main.npc[i];
