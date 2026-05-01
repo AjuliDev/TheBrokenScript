@@ -61,7 +61,7 @@ public class Follow : ModNPC
 		NPC.height = 90;
 		NPC.damage = 10;
 		NPC.defense = 20;
-		NPC.lifeMax = 200;
+		NPC.lifeMax = 50;
 		NPC.HitSound = SoundID.NPCHit1;
 		NPC.dontTakeDamageFromHostiles = true;
 		NPC.dontTakeDamage = false;
