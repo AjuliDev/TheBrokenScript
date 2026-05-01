@@ -17,6 +17,7 @@ public class CorruptedMoonGlobalNPC : GlobalNPC
 			pool[ModContent.NPCType<NPCs.SiluetR2.SiluetR2>()] = 0.10f;
 			pool[ModContent.NPCType<NPCs.Obliteration.Obliteration>()] = 0.025f;
 			pool[ModContent.NPCType<NPCs.Follow.Follow>()] = 0.05f;
+			pool[ModContent.NPCType<NPCs.Possessor.Possessor>()] = 0.05f;
 		}
 	}
 	public override void EditSpawnRate(Player player, ref int spawnRate, ref int maxSpawns)
@@ -25,7 +26,7 @@ public class CorruptedMoonGlobalNPC : GlobalNPC
 		if (worldData.MoonData.MoonPhase != ModState.MoonPhase.Normal && !Main.IsItDay())
 		{
 			spawnRate = 600;
-			maxSpawns = 2;
+			maxSpawns = 10;
 		}
 	}
 }
