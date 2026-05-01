@@ -8,6 +8,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using TheBrokenScript.Common;
+using TheBrokenScript.Content.Tiles.Null;
 namespace TheBrokenScript.Content.NPCs.Obliteration;
 
 public class Obliteration : ModNPC
@@ -159,9 +160,9 @@ public class Obliteration : ModNPC
 				for (int y = tileY - checkRadius; y < tileY + checkRadius; y++)
 				{
 					Tile tile = Framing.GetTileSafely(x, y);
-					if (tile.HasTile && Main.tileSolid[tile.TileType] && tile.TileType != TileID.Obsidian)
+					if (tile.HasTile && Main.tileSolid[tile.TileType] && tile.TileType != ModContent.TileType<Null>())
 					{
-						WorldGen.PlaceTile(x, y, TileID.Obsidian, forced: true);
+						WorldGen.PlaceTile(x, y, ModContent.TileType<Null>(), forced: true);
 						WorldGen.SquareTileFrame(x, y);
 						NetMessage.SendTileSquare(-1, x, y, 1);
 					}
