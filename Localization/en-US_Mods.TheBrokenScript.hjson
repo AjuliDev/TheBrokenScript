@@ -5,6 +5,7 @@ NPCs: {
 	Obliteration.DisplayName: Obliteration
 	SiluetR2.DisplayName: Siluet R2
 	Follow.DisplayName: Follow
+	Possessor.DisplayName: Possessor
 }
 
 Configs: {
