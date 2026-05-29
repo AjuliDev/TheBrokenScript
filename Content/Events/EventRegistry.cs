@@ -8,6 +8,7 @@ public static class EventRegistry
 	{
 		// Events go here
 		new Event_GiftChest(),
+		new Event_Mangle(),
 	};
 	public static List<IModEvent> GetEnabled(ServerConfig config) => All.Where(e => e.IsEnabled(config)).ToList();
 }
