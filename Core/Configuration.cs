@@ -33,5 +33,8 @@ namespace TheBrokenScript.Core
 		[BackgroundColor(169, 40, 212, 255)]
 		[DefaultValue(true)]
 		public bool Event_GiftChest { get; set; }
+		[BackgroundColor(169, 40, 212, 255)]
+		[DefaultValue(true)]
+		public bool Event_Mangle { get; set; }
 	}
 }
