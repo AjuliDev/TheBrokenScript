@@ -14,7 +14,7 @@ public class ModScenes : ModSystem
 		Filters.Scene["Posterize"] = new Filter(
 			new ScreenShaderData(ModAssets.ShaderEffects["Posterize"], "One"),
 			EffectPriority.Medium);
-		Filters.Scene["Posterize"].GetShader().Shader.Parameters["uPosterizeLevels"].SetValue(16f);
+		Filters.Scene["Posterize"].GetShader().Shader.Parameters["uPosterizeLevels"].SetValue(8f);
 		Filters.Scene["Posterize"].Load();
 	}
 	public override void Unload()
