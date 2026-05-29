@@ -35,5 +35,10 @@ Configs: {
 			Label: Gift a random player a chest of things
 			Tooltip: ""
 		}
+
+		Event_Mangle: {
+			Label: Event_ Mangle
+			Tooltip: ""
+		}
 	}
 }
