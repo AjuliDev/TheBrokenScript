@@ -1,8 +1,8 @@
-# The Fragmented Script ![Static Badge](https://img.shields.io/badge/TModLoader-Mod-brightgreen) ![Steam Downloads](https://img.shields.io/steam/downloads/3626884707) ![Static Badge](https://img.shields.io/badge/work-in%20progress-darkred) ![Static Badge](https://img.shields.io/badge/version-0.23-yellow)
+# The Broken Script Reimagined ![Static Badge](https://img.shields.io/badge/TModLoader-Mod-brightgreen) ![Steam Downloads](https://img.shields.io/steam/downloads/3626884707) ![Static Badge](https://img.shields.io/badge/work-in%20progress-darkred) ![Static Badge](https://img.shields.io/badge/version-0.23-yellow)
 **by AjuliDev** <br/>
 Steam Workshop: https://steamcommunity.com/sharedfiles/filedetails/?id=3626884707
 ### License & Credits
-*A mod inspired by Minecraft's The Broken Script as well as Mark101's ARG, bringing a whole new story to life.*
+*An original mod for Terraria, thematically inspired by Minecraft's The Broken Script and Mark101's ARG. All code and assets are independently created by AjuliDev.*
 
 > This mod is not encouraged or endorsed by the original creator or the community creators of Minecraft's The Broken Script, or Mark101.
 
