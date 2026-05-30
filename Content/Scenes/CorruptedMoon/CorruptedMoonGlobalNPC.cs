@@ -21,10 +21,10 @@ public class CorruptedMoonGlobalNPC : GlobalNPC
 		}
 		if (worldData.SunData.SunPhase != ModState.SunPhase.Normal && Main.IsItDay())
 		{
-			pool[ModContent.NPCType<NPCs.SiluetR2.SiluetR2>()] = 0.02f;
-			pool[ModContent.NPCType<NPCs.SubAnomalyOne.SubAnomalyOne>()] = 0.02f;
-			pool[ModContent.NPCType<NPCs.Observe.Observe>()] = 0.02f;
-			pool[ModContent.NPCType<NPCs.Execute.Execute>()] = 0.02f;
+			pool[ModContent.NPCType<NPCs.SiluetR2.SiluetR2>()] = 0.075f;
+			pool[ModContent.NPCType<NPCs.SubAnomalyOne.SubAnomalyOne>()] = 0.075f;
+			pool[ModContent.NPCType<NPCs.Observe.Observe>()] = 0.075f;
+			pool[ModContent.NPCType<NPCs.Execute.Execute>()] = 0.075f;
 		}
 	}
 	public override void EditSpawnRate(Player player, ref int spawnRate, ref int maxSpawns)
