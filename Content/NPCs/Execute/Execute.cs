@@ -225,6 +225,7 @@ public class Execute : ModNPC
 		} else
 		{
 			NPC.velocity.X = MathHelper.Lerp(NPC.velocity.X, 0f, 0.1f);
+			closestPlayerInstance.Center = Vector2.Lerp(closestPlayerInstance.Center, NPC.Top, 0.2f);
 		}
 
 		// Torso Bone Placement
