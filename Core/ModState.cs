@@ -33,12 +33,22 @@ public class ModState : ModSystem
 		CorruptedRandom,
 		CorruptedSequence,
 	}
+	public enum SunPhase
+	{
+		Normal,
+		Missing,
+		Corrupted
+	}
 	public struct MoonData
 	{
 		public MoonPhase MoonPhase;
 		public int CorruptedSequenceID;
 		public int RandomCorruptedID;
 		public int SequenceTotalIndexes;
+	}
+	public struct SunData
+	{
+		public SunPhase SunPhase;
 	}
 	public struct Timings
 	{
@@ -49,6 +59,7 @@ public class ModState : ModSystem
 	{
 		public WorldState WorldState;
 		public MoonData MoonData;
+		public SunData SunData;
 		public Timings Timings;
 	}
 	#endregion Definitions
@@ -72,6 +83,7 @@ public class ModState : ModSystem
 		worldData.MoonData.MoonPhase = MoonPhase.Normal;
 		worldData.MoonData.CorruptedSequenceID = 0;
 		worldData.MoonData.SequenceTotalIndexes = 49;
+		worldData.SunData.SunPhase = SunPhase.Normal;
 		nightCounted = false;
 	}
 	public override void PostUpdateTime()
@@ -92,6 +104,21 @@ public class ModState : ModSystem
 			if (!nightCounted && !Main.IsItDay())
 			{
 				nightCounted = true;
+				if (Main.rand.NextBool(2))
+				{
+					worldData.SunData.SunPhase = SunPhase.Normal;
+				}
+				else
+				{
+					if (Main.rand.NextBool(2))
+					{
+						worldData.SunData.SunPhase = SunPhase.Missing;
+					}
+					else
+					{
+						worldData.SunData.SunPhase = SunPhase.Corrupted;
+					}
+				}
 			}
 			if (nightCounted && Main.IsItDay())
 			{
@@ -133,6 +160,7 @@ public class ModState : ModSystem
 		tag["TBS_RandCorruptedID"] = worldData.MoonData.RandomCorruptedID;
 		tag["TBS_WorldState"] = (int)worldData.WorldState;
 		tag["TBS_MoonPhase"] = (int)worldData.MoonData.MoonPhase;
+		tag["TBS_SunPhase"] = (int)worldData.SunData.SunPhase;
 	}
 	public override void LoadWorldData(TagCompound tag)
 	{
@@ -141,6 +169,7 @@ public class ModState : ModSystem
 		worldData.MoonData.RandomCorruptedID = tag.ContainsKey("TBS_RandCorruptedID") ? tag.GetInt("TBS_RandCorruptedID") : 0;
 		worldData.WorldState = tag.ContainsKey("TBS_WorldState") ? (WorldState)tag.GetInt("TBS_WorldState") : WorldState.NewWorld;
 		worldData.MoonData.MoonPhase = tag.ContainsKey("TBS_MoonPhase") ? (MoonPhase)tag.GetInt("TBS_MoonPhase") : MoonPhase.Normal;
+		worldData.SunData.SunPhase = tag.ContainsKey("TBS_SunPhase") ? (SunPhase)tag.GetInt("TBS_SunPhase") : SunPhase.Normal;
 	}
 	#endregion Mechanics
 	#region MultiplayerSync
@@ -157,6 +186,7 @@ public class ModState : ModSystem
 		packet.Write(worldData.MoonData.CorruptedSequenceID);
 		packet.Write((int)worldData.MoonData.MoonPhase);
 		packet.Write(worldData.Timings.TotalNightsPassed);
+		packet.Write((int)worldData.SunData.SunPhase);
 		packet.Send(-1, -1);
 	}
 	public static void ClientReceiver(BinaryReader reader)
@@ -170,6 +200,7 @@ public class ModState : ModSystem
 		worldData.MoonData.CorruptedSequenceID = reader.ReadInt32();
 		worldData.MoonData.MoonPhase = (MoonPhase)reader.ReadInt32();
 		worldData.Timings.TotalNightsPassed = reader.ReadInt32();
+		worldData.SunData.SunPhase = (SunPhase)reader.ReadInt32();
 	}
 	#endregion MultiplayerSync
 }
