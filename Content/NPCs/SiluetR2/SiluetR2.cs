@@ -116,13 +116,13 @@ public class SiluetR2 : ModNPC
 				}
 			}
 		}
-		if (Main.IsItDay() && Main.netMode != NetmodeID.MultiplayerClient)
-		{
-			NPC.life = 0;
-			NPC.HitEffect();
-			NPC.active = false;
-			NetMessage.SendData(MessageID.SyncNPC, -1, -1, null, NPC.whoAmI);
-		}
+		//if (Main.IsItDay() && Main.netMode != NetmodeID.MultiplayerClient)
+		//{
+		//	NPC.life = 0;
+		//	NPC.HitEffect();
+		//	NPC.active = false;
+		//	NetMessage.SendData(MessageID.SyncNPC, -1, -1, null, NPC.whoAmI);
+		//}
 	}
 	public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
 	{
