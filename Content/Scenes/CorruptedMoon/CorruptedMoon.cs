@@ -26,7 +26,7 @@ public class CorruptedMoon : ModSceneEffect
 	public override bool IsSceneEffectActive(Player player)
 	{
 		var worldData = ModState.GetWorldData();
-		if (worldData.MoonData.MoonPhase != ModState.MoonPhase.Normal && !Main.IsItDay())
+		if (worldData.MoonData.MoonPhase != ModState.MoonPhase.Normal && !Main.IsItDay() || worldData.SunData.SunPhase != ModState.SunPhase.Normal && Main.IsItDay())
 		{
 			return true;
 		}
