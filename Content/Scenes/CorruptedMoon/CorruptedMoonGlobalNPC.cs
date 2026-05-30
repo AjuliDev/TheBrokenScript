@@ -23,10 +23,10 @@ public class CorruptedMoonGlobalNPC : GlobalNPC
 	public override void EditSpawnRate(Player player, ref int spawnRate, ref int maxSpawns)
 	{
 		var worldData = ModState.GetWorldData();
-		if (worldData.MoonData.MoonPhase != ModState.MoonPhase.Normal && !Main.IsItDay() && Lighting.Brightness((int)player.Bottom.X, (int)player.Bottom.Y) < 0.5f)
+		if (worldData.MoonData.MoonPhase != ModState.MoonPhase.Normal && !Main.IsItDay()) // Checking light levels does not work that easily for this
 		{
 			spawnRate = 1200;
-			maxSpawns = 10;
+			maxSpawns = 5;
 		}
 	}
 }
