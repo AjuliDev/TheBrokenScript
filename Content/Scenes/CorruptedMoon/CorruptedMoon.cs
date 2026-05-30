@@ -7,7 +7,7 @@ public class CorruptedMoon : ModSceneEffect
 	public override int Music => 0;
 	public override string MapBackground => "TheBrokenScript/Content/Scenes/CorruptedMoon/CorruptedMoonMapBackground";
 	public override ModWaterStyle WaterStyle => ModContent.GetInstance<WaterStyleCorruptedMoon>();
-	public override SceneEffectPriority Priority => SceneEffectPriority.BossMedium;
+	public override SceneEffectPriority Priority => SceneEffectPriority.Event;
 	public override float GetWeight(Player player)
 	{
 		return 1.0f;
