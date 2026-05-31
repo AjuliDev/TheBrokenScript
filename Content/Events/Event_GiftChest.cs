@@ -1,7 +1,11 @@
 ﻿using System;
 using System.Linq;
 using Terraria;
+using Terraria.DataStructures;
 using Terraria.ID;
+using Terraria.ModLoader;
+using Terraria.ObjectData;
+using TheBrokenScript.Content.Tiles.Null;
 using TheBrokenScript.Core;
 namespace TheBrokenScript.Content.Events;
 public class Event_GiftChest : IModEvent
@@ -24,16 +28,6 @@ public class Event_GiftChest : IModEvent
 		ItemID.MeteoriteBar,
 		ItemID.TungstenBar,
 		ItemID.GoldCoin,
-		ItemID.UnholyArrow,
-		ItemID.HolyArrow,
-		ItemID.Beenade,
-		ItemID.PoopBlock,
-		ItemID.SandBlock,
-		ItemID.DirtBlock,
-		ItemID.MudBlock,
-		ItemID.StoneBlock,
-		ItemID.AshWood,
-		ItemID.ClayBlock
 		];
 	private void SpawnChestNearPlayer(Player player)
 	{
@@ -42,33 +36,38 @@ public class Event_GiftChest : IModEvent
 		for (int attempt = 0; attempt < 10; attempt++)
 		{
 			int x = playerTileX + Main.rand.Next(-20, 21);
-			int y = playerTileY;
-			while (y < Main.maxTilesY - 10 && !WorldGen.SolidTile(x, y))
+			int y = playerTileY - 4;
+			while (y < Main.maxTilesY - 10 && !Main.tile[x, y].HasTile)
 			{
 				y++;
 			}
-			y--;
-			int chestIndex = WorldGen.PlaceChest(x, y, TileID.Containers, false, 1);
-			if (chestIndex == -1)
+			y--; //Retract from solid tile
+			bool hasPlacedChest = WorldGen.PlaceObject(x, y, TileID.Containers, true, 0);
+			if (!hasPlacedChest)
 			{
 				continue;
 			}
-			Chest chest = Main.chest[chestIndex];
-			chest.item[0].SetDefaults(itemDropPool[Main.rand.Next(0, itemDropPool.Length)]);
-			chest.item[0].stack = Main.rand.Next(10, 21);
-			if (Main.netMode == NetmodeID.Server)
+
+			Point16 topLeft = TileObjectData.TopLeft(x, y);
+			int chestID = Chest.CreateChest(topLeft.X, topLeft.Y);
+			if (chestID == -1)
 			{
-/*				foreach (RemoteClient client in Netplay.Clients.Where(c => c.IsActive))
-				{
-					client.TileSections[
-						Netplay.GetSectionX(x),
-						Netplay.GetSectionY(y)
-						] = false;
-				}*/
-				NetMessage.SendTileSquare(-1, x - 1, y - 1, 4, 4);
-				NetMessage.SendData(MessageID.SyncChestItem, -1, -1, null, chestIndex, 0);
+				continue;
 			}
 
+			Chest chestTile = Main.chest[chestID];
+			chestTile.item[0].SetDefaults(itemDropPool[Main.rand.Next(0, itemDropPool.Length)]);
+			chestTile.item[0].stack = Main.rand.Next(1, 16);
+
+			WorldGen.PlaceTile(topLeft.X, topLeft.Y + 2, ModContent.TileType<Null>(), forced: true);
+			WorldGen.PlaceTile(topLeft.X + 1, topLeft.Y + 2, ModContent.TileType<Null>(), forced: true);
+
+			if (Main.netMode != NetmodeID.SinglePlayer)
+			{
+				NetMessage.SendData(MessageID.ChestUpdates, -1, -1, null, chestID, topLeft.X, topLeft.Y);
+				NetMessage.SendData(MessageID.SyncChestItem, -1, -1, null, chestID, 0);
+				NetMessage.SendTileSquare(-1, topLeft.X, topLeft.Y, 2, 4);
+			}
 			break;
 		}
 	}
