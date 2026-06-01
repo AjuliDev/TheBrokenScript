@@ -1,5 +1,7 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 using TheBrokenScript.Content.Tiles.Null;
 using TheBrokenScript.Core;
@@ -20,15 +22,53 @@ public class Event_Mangle : IModEvent
 	}
 	private void mangleTilesAroundPlayer(Player player)
 	{
-
 		int playerTileX = (int)(player.position.X / 16);
 		int playerTileY = (int)(player.position.Y / 16);
-		int x = playerTileX + Main.rand.Next(-20, 20);
-		int y = playerTileY;
-		while (y < Main.maxTilesY - 10 && !WorldGen.SolidTile(x, y))
+		int radius = 10; // Radius for the event
+		var nearbyTileTypes = new HashSet<ushort>(); // HashSet of tiles
+		for (int x = -radius; x <= radius; x++) // Scan for nearby tiles within the radius (unless I screwed something up lmao)
 		{
-			y++;
+			for (int y = -radius; y <= radius; y++)
+			{
+				int tileX = playerTileX + x;
+				int tileY = playerTileY + y;
+				if (tileX < 0 || tileY < 0 || tileX >= Main.maxTilesX || tileY >= Main.maxTilesY)
+				{
+					continue;
+				}
+				Tile tile = Main.tile[tileX, tileY];
+				if (tile != null && tile.HasTile)
+				{
+					nearbyTileTypes.Add(tile.TileType); // Add new tile to hashset
+				}
+			}
 		}
-		//WorldGen.OreRunner(x, y, 15, 15, (ushort)ModContent.TileType<Null>());
+		nearbyTileTypes.Add((ushort)ModContent.TileType<Null>()); // To replace with corrupted tiles instead of null
+		var tilePool = nearbyTileTypes.ToList();
+		for (int x = -radius; x <= radius; x++)
+		{
+			for (int y = -radius; y <= radius; y++)
+			{
+				int tileX = playerTileX + x;
+				int tileY = playerTileY + y;
+				if (tileX < 0 || tileY < 0 || tileX >= Main.maxTilesX || tileY >= Main.maxTilesY)
+				{
+					continue;
+				}
+				Tile tile = Main.tile[tileX, tileY];
+				if (tile == null || !tile.HasTile)
+				{
+					continue;
+				}
+				ushort newType = tilePool[Main.rand.Next(tilePool.Count)];
+				tile.TileType = newType;
+				WorldGen.SquareTileFrame(tileX, tileY, true);
+			}
+		}
+		if (Main.netMode != NetmodeID.SinglePlayer)
+		{
+			NetMessage.SendTileSquare(-1, playerTileX, playerTileY, 24); 
+			// Broadcast the change to all players in server.
+		}
 	}
 }
