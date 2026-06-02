@@ -1,9 +1,5 @@
-﻿using Microsoft.Xna.Framework;
-using System;
-using Terraria;
-using Terraria.Chat;
+﻿using Terraria;
 using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
 using TheBrokenScript.Content.Events;
 namespace TheBrokenScript.Core;
@@ -26,7 +22,7 @@ public class ModEvents : ModSystem
 		TriggerRandom();
 		ResetTimer();
 	}
-	private void TriggerRandom()
+	public static void TriggerRandom() // Private to Public Static
 	{
 		var config = ServerConfig.Instance;
 		if (config == null)
@@ -43,6 +39,7 @@ public class ModEvents : ModSystem
 			return;
 		}
 		enabled[Main.rand.Next(enabled.Count)].StartEvent();
+		Main.NewText($"[DEBUG]: Executed random event.");
 	}
 	public static void TriggerEvent(IModEvent modEvent)
 	{
@@ -56,6 +53,7 @@ public class ModEvents : ModSystem
 			return;
 		}
 		modEvent.StartEvent();
+		Main.NewText($"[DEBUG]: Executed event.");
 	}
 	private void ResetTimer()
 	{
@@ -69,5 +67,6 @@ public class ModEvents : ModSystem
 		int max = 60 * 60 * config.MaximumRandomEventCooldown;
 		randEventTargetTime = Main.rand.Next(min, max + 1);
 		randEventTimer = 0;
+		Main.NewText($"[DEBUG]: Reset timer to {randEventTargetTime}");
 	}
 }
