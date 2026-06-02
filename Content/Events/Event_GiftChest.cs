@@ -1,11 +1,7 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
-using Terraria.ModLoader;
-using Terraria.ObjectData;
-using TheBrokenScript.Content.Tiles.Null;
 using TheBrokenScript.Core;
 namespace TheBrokenScript.Content.Events;
 public class Event_GiftChest : IModEvent
@@ -31,44 +27,64 @@ public class Event_GiftChest : IModEvent
 		];
 	private void SpawnChestNearPlayer(Player player)
 	{
-		int playerTileX = (int)(player.position.X / 16);
-		int playerTileY = (int)(player.position.Y / 16);
-		for (int attempt = 0; attempt < 10; attempt++)
+		int playerTileX = (int)player.Center.X / 16;
+		int playerTileY = (int)player.Center.Y / 16;
+		int maxAttempts = 1000;
+		int currentAttempts = 0;
+		int x = 0;
+		int y = 0;
+		bool success = false;
+		while (!success)
 		{
-			int x = playerTileX + Main.rand.Next(-20, 21);
-			int y = playerTileY - 4;
-			while (y < Main.maxTilesY - 10 && !Main.tile[x, y].HasTile)
+			if (currentAttempts >= maxAttempts)
 			{
-				y++;
+				break;
 			}
-			y--; //Retract from solid tile
-			bool hasPlacedChest = WorldGen.PlaceObject(x, y, TileID.Containers, true, 0);
-			if (!hasPlacedChest)
+			currentAttempts++;
+			x = Main.rand.Next(playerTileX - 10, playerTileX + 10);
+			y = Main.rand.Next(playerTileY - 10, playerTileY + 10);
+			int chestIndex = WorldGen.PlaceChest(x, y, type: 21, notNearOtherChests: false, style: 0);
+			if (chestIndex != -1)
 			{
-				continue;
+				Chest chest = Main.chest[chestIndex];
+				if (chest != null)
+				{
+					// Fill inventory first
+					int itemSlot = 0;
+					int slotsToFill = Main.rand.Next(1, 4);
+					var itemTypePool = itemDropPool.OrderBy(itemType => Main.rand.Next()).Take(slotsToFill);
+					foreach (int itemType in itemTypePool)
+					{
+						Item item = new Item();
+						item.SetDefaults(itemType);
+						item.stack = Main.rand.Next(1, 17);
+						chest.item[itemSlot] = item;
+						itemSlot++;
+						if (itemSlot >= 40) break;
+					}
+
+					WorldGen.RangeFrame(chest.x - 1, chest.y - 1, chest.x + 3, chest.y + 3);
+
+					int capturedIndex = chestIndex;
+					int capturedX = chest.x;
+					int capturedY = chest.y;
+					int capturedSlots = itemSlot;
+
+					// Defer sync to next tick so tile data is fully committed
+					Main.QueueMainThreadAction(() =>
+					{
+						NetMessage.SendData(MessageID.ChestUpdates, -1, -1, null, 0, capturedX, capturedY, 0, capturedIndex);
+						NetMessage.SendTileSquare(-1, capturedX - 1, capturedY - 1, 4, 4);
+						for (int i = 0; i < capturedSlots; i++)
+						{
+							NetMessage.SendData(MessageID.SyncChestItem, -1, -1, null, capturedIndex, i);
+						} 
+					}); // Thanks GabeHasWon for the help. This took way too long.
+
+					success = true;
+					break;
+				}
 			}
-
-			Point16 topLeft = TileObjectData.TopLeft(x, y);
-			int chestID = Chest.CreateChest(topLeft.X, topLeft.Y);
-			if (chestID == -1)
-			{
-				continue;
-			}
-
-			Chest chestTile = Main.chest[chestID];
-			chestTile.item[0].SetDefaults(itemDropPool[Main.rand.Next(0, itemDropPool.Length)]);
-			chestTile.item[0].stack = Main.rand.Next(1, 16);
-
-			WorldGen.PlaceTile(topLeft.X, topLeft.Y + 2, ModContent.TileType<Null>(), forced: true);
-			WorldGen.PlaceTile(topLeft.X + 1, topLeft.Y + 2, ModContent.TileType<Null>(), forced: true);
-
-			if (Main.netMode != NetmodeID.SinglePlayer)
-			{
-				NetMessage.SendData(MessageID.ChestUpdates, -1, -1, null, chestID, topLeft.X, topLeft.Y);
-				NetMessage.SendData(MessageID.SyncChestItem, -1, -1, null, chestID, 0);
-				NetMessage.SendTileSquare(-1, topLeft.X, topLeft.Y, 2, 4);
-			}
-			break;
 		}
 	}
 }
