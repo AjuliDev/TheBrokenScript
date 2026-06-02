@@ -37,7 +37,7 @@ public class Event_Mangle : IModEvent
 					continue;
 				}
 				Tile tile = Main.tile[tileX, tileY];
-				if (tile != null && tile.HasTile)
+				if (tile != null && tile.HasTile && Main.tileSolid[tile.TileType] && Main.tileMergeDirt[tile.TileType])
 				{
 					nearbyTileTypes.Add(tile.TileType); // Add new tile to hashset
 				}
@@ -56,7 +56,7 @@ public class Event_Mangle : IModEvent
 					continue;
 				}
 				Tile tile = Main.tile[tileX, tileY];
-				if (tile == null || !tile.HasTile)
+				if (tile == null || !tile.HasTile || TileID.Sets.IsAContainer[tile.TileType])
 				{
 					continue;
 				}
