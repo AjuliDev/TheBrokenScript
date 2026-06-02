@@ -1,4 +1,4 @@
-displayName = The Broken Script Reimagined
+displayName = The Broken Script: Aftermath
 name = TheBrokenScript
 author = AjuliDev
 version = 0.23.0
