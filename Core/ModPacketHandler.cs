@@ -15,6 +15,7 @@ public static class ModPacketHandler
 		TriggerEvent,
 		RandomEvent,
 		KernelPanicCastToClient,
+		FaintCastToClient,
 	} 
 	public static void Handle(BinaryReader reader, int whoAmI) // Multiplayer packet handling
 	{
@@ -45,6 +46,9 @@ public static class ModPacketHandler
 				break;
 			case PacketType.KernelPanicCastToClient:
 				KernelPanicModSystem.Enable();
+				break;
+			case PacketType.FaintCastToClient:
+				FaintModSystem.Enable();
 				break;
 			default:
 				ModContent.GetInstance<TheBrokenScript>().Logger.WarnFormat("The Broken Script: Unknown packet type: {0}", packet);
