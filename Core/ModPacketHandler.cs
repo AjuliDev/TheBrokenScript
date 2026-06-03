@@ -2,6 +2,7 @@
 using System.Linq;
 using Terraria;
 using Terraria.ModLoader;
+using TheBrokenScript.Common.EventHelpers;
 using TheBrokenScript.Content.Events;
 using TheBrokenScript.Content.NPCs.Possessor;
 namespace TheBrokenScript.Core;
@@ -13,6 +14,7 @@ public static class ModPacketHandler
 		SyncPossessorPlayer,
 		TriggerEvent,
 		RandomEvent,
+		KernelPanicCastToClient,
 	} 
 	public static void Handle(BinaryReader reader, int whoAmI) // Multiplayer packet handling
 	{
@@ -40,6 +42,9 @@ public static class ModPacketHandler
 				break;
 			case PacketType.RandomEvent:
 				ModEvents.TriggerRandom();
+				break;
+			case PacketType.KernelPanicCastToClient:
+				KernelPanicModSystem.Enable();
 				break;
 			default:
 				ModContent.GetInstance<TheBrokenScript>().Logger.WarnFormat("The Broken Script: Unknown packet type: {0}", packet);
