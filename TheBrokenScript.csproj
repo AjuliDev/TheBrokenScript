@@ -9,6 +9,7 @@
 		<Folder Include="Common\Effects\" />
 		<Folder Include="Common\Sounds\" />
 		<Folder Include="Common\Textures\Moon\" />
+		<Folder Include="Common\Textures\KernelPanic\" />
 		<Folder Include="Source\Libraries\" />
 		<Folder Include="Source\KBOFXC\" />
 		<Folder Include="Utilities\" />
