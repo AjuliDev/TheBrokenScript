@@ -32,12 +32,17 @@ Configs: {
 		}
 
 		Event_GiftChest: {
-			Label: Gift a random player a chest of things
+			Label: Gift Chest Event
 			Tooltip: ""
 		}
 
 		Event_Mangle: {
-			Label: Event_ Mangle
+			Label: Mangle Tiles Event
+			Tooltip: ""
+		}
+
+		Event_KernelPanic: {
+			Label: BSOD Event
 			Tooltip: ""
 		}
 	}
