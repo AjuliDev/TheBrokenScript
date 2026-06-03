@@ -44,7 +44,8 @@ public class KernelPanicModSystem : ModSystem
 								"Windows11_BSOD",
 								"Windows7_BSOD",
 								"Windows8_BSOD",
-								"WindowsXP_BSOD"
+								"WindowsXP_BSOD",
+								"Static"
 							};
 							SelectedTexture2D = ModAssets.Textures[keys[Main.rand.Next(keys.Length)]];
 							HasSelectedImage = true;
