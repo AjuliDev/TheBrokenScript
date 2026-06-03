@@ -37,7 +37,7 @@ Configs: {
 		}
 
 		Event_Mangle: {
-			Label: Mangle Tiles Event
+			Label: Mangle Event
 			Tooltip: ""
 		}
 
@@ -48,6 +48,11 @@ Configs: {
 
 		Event_Faint: {
 			Label: Faint Event
+			Tooltip: ""
+		}
+
+		Event_MaliciousGift: {
+			Label: Malicious Gift Event
 			Tooltip: ""
 		}
 	}
