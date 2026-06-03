@@ -1,4 +1,5 @@
-﻿using Terraria;
+﻿using System.Collections.Generic;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using TheBrokenScript.Common.EventHelpers;
@@ -11,9 +12,22 @@ public class Event_KernelPanic : IModEvent
 	{
 		if (Main.dedServ)
 		{
+			List<int> activePlayers = [];
+			for (int i = 0; i < Main.maxPlayers; i++)
+			{
+				if (Main.player[i].active)
+				{
+					activePlayers.Add(i);
+				}
+			}
+			if (activePlayers.Count == 0)
+			{
+				return;
+			}
+			int targetPlayer = activePlayers[Main.rand.Next(activePlayers.Count)];
 			ModPacket packet = ModContent.GetInstance<TheBrokenScript>().GetPacket();
 			packet.Write((byte)ModPacketHandler.PacketType.KernelPanicCastToClient);
-			packet.Send(-1, -1);
+			packet.Send(targetPlayer, -1);
 		} else if (Main.netMode == NetmodeID.SinglePlayer)
 		{
 			KernelPanicModSystem.Enable();
