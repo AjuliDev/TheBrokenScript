@@ -45,5 +45,10 @@ Configs: {
 			Label: BSOD Event
 			Tooltip: ""
 		}
+
+		Event_Faint: {
+			Label: Faint Event
+			Tooltip: ""
+		}
 	}
 }
