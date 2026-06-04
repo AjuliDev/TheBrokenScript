@@ -12,7 +12,8 @@ public static class EventRegistry
 		new Event_KernelPanic(),
 		new Event_Faint(),
 		new Event_MaliciousGift(),
-		new Event_ChunkCorruptor()
+		new Event_ChunkCorruptor(),
+		new Event_RandomStructure()
 	};
 	public static List<IModEvent> GetEnabled(ServerConfig config) => All.Where(e => e.IsEnabled(config)).ToList();
 }
