@@ -7,6 +7,7 @@
 	<!-- References -->
 	<ItemGroup>
 		<Folder Include="Common\Effects\" />
+		<Folder Include="Common\Structures\" />
 		<Folder Include="Common\Sounds\" />
 		<Folder Include="Common\Textures\Moon\" />
 		<Folder Include="Common\Textures\KernelPanic\" />
