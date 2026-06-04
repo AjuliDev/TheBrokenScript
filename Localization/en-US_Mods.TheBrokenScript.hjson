@@ -55,5 +55,10 @@ Configs: {
 			Label: Malicious Gift Event
 			Tooltip: ""
 		}
+
+		Event_ChunkCorruptor: {
+			Label: Chunk Corruptor
+			Tooltip: ""
+		}
 	}
 }
