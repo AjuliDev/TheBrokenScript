@@ -60,5 +60,10 @@ Configs: {
 			Label: Chunk Corruptor
 			Tooltip: ""
 		}
+
+		Event_RandomStructure: {
+			Label: Structure Apparitions
+			Tooltip: ""
+		}
 	}
 }
