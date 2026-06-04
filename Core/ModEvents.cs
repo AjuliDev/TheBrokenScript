@@ -2,6 +2,7 @@
 using Terraria.ID;
 using Terraria.ModLoader;
 using TheBrokenScript.Content.Events;
+using TheBrokenScript.Core;
 namespace TheBrokenScript.Core;
 public class ModEvents : ModSystem
 {
@@ -15,12 +16,16 @@ public class ModEvents : ModSystem
 		}
 		//ChatHelper.BroadcastChatMessage(NetworkText.FromFormattable($"{randEventTimer} out of {randEventTargetTime}"), color: Color.White, -1);
 		//Main.NewText($"{randEventTimer} out of {randEventTargetTime}");
-		if (++randEventTimer < randEventTargetTime)
+		ModState.WorldData worldData = ModState.GetWorldData();
+		if (worldData.WorldState == ModState.WorldState.Corrupted)
 		{
-			return;
+			if (++randEventTimer < randEventTargetTime)
+			{
+				return;
+			}
+			TriggerRandom();
+			ResetTimer();
 		}
-		TriggerRandom();
-		ResetTimer();
 	}
 	public static void TriggerRandom() // Private to Public Static
 	{
