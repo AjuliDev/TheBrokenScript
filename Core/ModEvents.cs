@@ -17,7 +17,7 @@ public class ModEvents : ModSystem
 		//ChatHelper.BroadcastChatMessage(NetworkText.FromFormattable($"{randEventTimer} out of {randEventTargetTime}"), color: Color.White, -1);
 		//Main.NewText($"{randEventTimer} out of {randEventTargetTime}");
 		ModState.WorldData worldData = ModState.GetWorldData();
-		if (worldData.WorldState == ModState.WorldState.Corrupted)
+		if (worldData.WorldState >= ModState.WorldState.Awakening)
 		{
 			if (++randEventTimer < randEventTargetTime)
 			{
@@ -63,13 +63,18 @@ public class ModEvents : ModSystem
 	private void ResetTimer()
 	{
 		var config = ServerConfig.Instance;
+		int min = 60, max = 60;
 		if (config == null)
 		{
-			return;
+			min = 60 * 60 * 1;
+			max = 60 * 60 * 1;
 		}
-		// 60 ticks (second) * 60 * ...
-		int min = 60 * 60 * config.MinimumRandomEventCooldown;
-		int max = 60 * 60 * config.MaximumRandomEventCooldown;
+		else
+		{
+			// 60 ticks (second) * 60 * ...
+			min = 60 * 60 * config.MinimumRandomEventCooldown;
+			max = 60 * 60 * config.MaximumRandomEventCooldown;
+		}
 		randEventTargetTime = Main.rand.Next(min, max + 1);
 		randEventTimer = 0;
 		Main.NewText($"[DEBUG]: Reset timer to {randEventTargetTime}");
