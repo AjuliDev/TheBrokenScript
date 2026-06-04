@@ -67,10 +67,15 @@ public class Event_RandomStructure : IModEvent
 		if (validEntries.Count == 0) return;
 		var structureToSpawn = validEntries[Main.rand.Next(validEntries.Count)];
 
-		spawnRoot = new Point16(
-			Main.rand.Next((int)(targetPlayer.Center.X / 16f - 50), (int)(targetPlayer.Center.X / 16f + 50)),
-			Main.rand.Next((int)(targetPlayer.Center.Y / 16f - 50), (int)(targetPlayer.Center.Y / 16f + 50))
-			);
+		int tileX = (int)(targetPlayer.Center.X / 16f);
+		int tileY = (int)(targetPlayer.Center.Y / 16f);
+
+		int offsetX, offsetY;
+
+		offsetX = Main.rand.Next(60, 90) * (Main.rand.NextBool() ? 1 : -1);
+		offsetY = Main.rand.Next(34, 64) * (Main.rand.NextBool() ? 1 : -1);
+
+		spawnRoot = new Point16(tileX + offsetX, tileY + offsetY);
 
 		if (spawnEnvironment == SpawnLocation.Surface)
 		{
