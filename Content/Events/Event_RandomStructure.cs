@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Terraria;
 using Terraria.DataStructures;
+using Terraria.ID;
 using Terraria.ModLoader;
 using TheBrokenScript.Core;
 
@@ -122,6 +123,20 @@ public class Event_RandomStructure : IModEvent
 		if (Main.dedServ)
 		{
 			NetMessage.SendTileSquare(-1, structureX - 5, structureY - 5, structureDimensions.X + 10, structureDimensions.Y + 10);
+		}
+
+		// Play Sound
+		if (Main.dedServ)
+		{
+			ModPacket packet = ModContent.GetInstance<TheBrokenScript>().GetPacket();
+			packet.Write((byte)ModPacketHandler.PacketType.RequestCaveSound);
+			packet.Write(structureX);
+			packet.Write(structureY);
+			packet.Send(-1, -1);
+		}
+		else if (Main.netMode == NetmodeID.SinglePlayer)
+		{
+			ModSounds.PlayCaveNoise(structureX, structureY);
 		}
 	}
 
