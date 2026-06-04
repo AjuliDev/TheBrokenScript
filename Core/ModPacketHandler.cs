@@ -16,6 +16,7 @@ public static class ModPacketHandler
 		RandomEvent,
 		KernelPanicCastToClient,
 		FaintCastToClient,
+		RequestCaveSound
 	} 
 	public static void Handle(BinaryReader reader, int whoAmI) // Multiplayer packet handling
 	{
@@ -49,6 +50,11 @@ public static class ModPacketHandler
 				break;
 			case PacketType.FaintCastToClient:
 				FaintModSystem.Enable();
+				break;
+			case PacketType.RequestCaveSound:
+				int i = reader.ReadInt32();
+				int j = reader.ReadInt32();
+				ModSounds.PlayCaveNoise(i, j);
 				break;
 			default:
 				ModContent.GetInstance<TheBrokenScript>().Logger.WarnFormat("The Broken Script: Unknown packet type: {0}", packet);
