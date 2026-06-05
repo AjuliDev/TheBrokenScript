@@ -16,7 +16,7 @@ public class Possessor : ModNPC
 	private ref float aiAnchorX => ref NPC.ai[1];
 	private ref float aiAnchorY => ref NPC.ai[2];
 	private ref float aiTimer => ref NPC.ai[3];
-	private const int SEARCH_RADIUS = 50; // Tiles
+	private const int SEARCH_RADIUS = 150; // Tiles
 	private const int SEARCH_COOLDOWN = 60;
 	private const int EXPIRY = 15 * 60; // Seconds
 	private int expiryTimer;
@@ -55,6 +55,8 @@ public class Possessor : ModNPC
 			if (expiryTimer >= EXPIRY)
 			{
 				NPC.active = false;
+				NetMessage.SendData(MessageID.SyncNPC, -1, -1, null, NPC.whoAmI);
+				return;
 			}
 		}
 
@@ -131,7 +133,8 @@ public class Possessor : ModNPC
 			{
 				tilex = npcCenterX + x;
 				tiley = npcCenterY + y;
-				if (isSquareGlass(tilex, tiley) && surroundedByWalls(tilex, tiley))
+				//if (isSquareGlass(tilex, tiley) && surroundedByWalls(tilex, tiley)) old approach, fixed 2x2 with edges
+				if (isSquareGlass(tilex, tiley) && countOpenSides(tilex, tiley) <= 1) // new approach, 1 side necessary
 				{
 					return true;
 				}
@@ -181,6 +184,45 @@ public class Possessor : ModNPC
 		}
 		return true;
 	}
+
+	private int countOpenSides(int worldX, int worldY)
+	{
+		int open = 0;
+		for (int x = worldX; x<= worldX + 1; x++)
+		{
+			if (Framing.GetTileSafely(x, worldY - 1).WallType == WallID.None)
+			{
+				open++;
+				break;
+			}
+		}
+		for (int x = worldX; x <= worldX + 1; x++)
+		{
+			if (Framing.GetTileSafely(x, worldY + 2).WallType == WallID.None)
+			{
+				open++;
+				break;
+			}
+		}
+		for (int y = worldY; y <= worldY + 1; y++)
+		{
+			if (Framing.GetTileSafely(worldX - 1, y).WallType == WallID.None)
+			{
+				open++;
+				break;
+			}
+		}
+		for (int y = worldY; y <= worldY + 1; y++)
+		{
+			if (Framing.GetTileSafely(worldX + 2, y).WallType == WallID.None)
+			{
+				open++;
+				break;
+			}
+		}
+		return open;
+	}
+
 	public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
 	{
 		if (aiState != 1 || Textures[0]?.Value == null)
