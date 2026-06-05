@@ -67,8 +67,21 @@ public class Event_Mangle : IModEvent
 		}
 		if (Main.netMode != NetmodeID.SinglePlayer)
 		{
-			NetMessage.SendTileSquare(-1, playerTileX, playerTileY, 24); 
+			NetMessage.SendTileSquare(-1, playerTileX, playerTileY, 24);
 			// Broadcast the change to all players in server.
+		}
+		// Play Sound
+		if (Main.dedServ)
+		{
+			ModPacket packet = ModContent.GetInstance<TheBrokenScript>().GetPacket();
+			packet.Write((byte)ModPacketHandler.PacketType.RequestCaveSound);
+			packet.Write(playerTileX);
+			packet.Write(playerTileY);
+			packet.Send(-1, -1);
+		}
+		else if (Main.netMode == NetmodeID.SinglePlayer)
+		{
+			ModSounds.PlayCaveNoise(playerTileX, playerTileY);
 		}
 	}
 }
