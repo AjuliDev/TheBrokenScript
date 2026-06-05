@@ -70,7 +70,7 @@ public class KernelPanicModSystem : ModSystem
 							}
 						}
 						// Check Against Cooldown and disable if necessary
-						Main.spriteBatch.Draw(SelectedTexture2D?.Value, new Rectangle(0, 0, Main.screenWidth, Main.screenHeight), Color.White);
+						Main.spriteBatch.Draw(SelectedTexture2D?.Value, new Rectangle(0, 0, Main.screenWidth + 5, Main.screenHeight + 5), Color.White);
 						if ((Display == DisplayType.Regular && Timer >= DisplayTimeRegular) || (Display == DisplayType.Flash && Timer >= DisplayTimeFlash))
 						{
 							IsActive = false;
