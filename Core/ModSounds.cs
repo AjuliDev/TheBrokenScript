@@ -10,7 +10,7 @@ public class ModSounds : ModSystem
 
 	public static void PlayCaveNoise(int i = 0, int j = 0) // To be played locally via a packet.
 	{
-		Point16 caveNoiseEntries = new Point16(1, 6); // min index, max index
+		Point16 caveNoiseEntries = new Point16(1, 17); // min index, max index
 		int randEntry = Main.rand.Next(caveNoiseEntries.X, caveNoiseEntries.Y + 1);
 		if (ActiveSounds.Contains($"CaveNoise{randEntry}"))
 		{
