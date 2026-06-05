@@ -212,5 +212,19 @@ public class Event_ChunkCorruptor : IModEvent
 				NetMessage.SendTileSquare(-1, newOrigin.X - 1, newOrigin.Y - 1, 16, 16);
 			}
 		}
+
+		// Play Sound
+		if (Main.dedServ)
+		{
+			ModPacket packet = ModContent.GetInstance<TheBrokenScript>().GetPacket();
+			packet.Write((byte)ModPacketHandler.PacketType.RequestCaveSound);
+			packet.Write(chunkX);
+			packet.Write(chunkY);
+			packet.Send(-1, -1);
+		}
+		else if (Main.netMode == NetmodeID.SinglePlayer)
+		{
+			ModSounds.PlayCaveNoise(chunkX, chunkY);
+		}
 	}
 }
