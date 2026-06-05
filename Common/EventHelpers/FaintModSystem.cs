@@ -44,7 +44,7 @@ public class FaintModSystem : ModSystem
 							Timer = 0;
 							HasPlayedSound = false;
 						}
-						Main.spriteBatch.Draw(Terraria.GameContent.TextureAssets.MagicPixel.Value, new Rectangle(0, 0, Main.screenWidth, Main.screenHeight), Color.Black);
+						Main.spriteBatch.Draw(Terraria.GameContent.TextureAssets.MagicPixel.Value, new Rectangle(0, 0, Main.screenWidth + 5, Main.screenHeight + 5), Color.Black);
 						// Advance Timer
 						Timer++;
 					}
