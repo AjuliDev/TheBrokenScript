@@ -9,7 +9,7 @@ public class NullDust : ModDust
 	{
 		dust.noGravity = true;
 		dust.noLight = true;
-		dust.scale = 5f;
+		dust.scale = 8f;
 	}
 	public override bool Update(Dust dust)
 	{

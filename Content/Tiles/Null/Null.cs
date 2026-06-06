@@ -21,7 +21,10 @@ public class Null : ModTile
 	}
 	public override void EmitParticles(int i, int j, Tile tile, short tileFrameX, short tileFrameY, Color tileLight, bool visible)
 	{
-		base.EmitParticles(i, j, tile, tileFrameX, tileFrameY, tileLight, visible);
-		Dust.NewDust(new Vector2(i * 16f, j * 16f), 25, 25, ModContent.DustType<NullDust>(), 0.5f, 0.5f, 0, Color.White, 250);
+		//base.EmitParticles(i, j, tile, tileFrameX, tileFrameY, tileLight, visible);
+		if (Main.rand.NextBool(3))
+		{
+			Dust.NewDust(new Vector2(i * 16f, j * 16f), 25, 25, ModContent.DustType<NullDust>(), 0.5f, 0.5f, 0, Color.White, 250);
+		}
 	}
 }
