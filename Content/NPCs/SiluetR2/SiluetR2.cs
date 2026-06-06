@@ -6,6 +6,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using TheBrokenScript.Common;
+using TheBrokenScript.Core;
 namespace TheBrokenScript.Content.NPCs.SiluetR2;
 public class SiluetR2 : ModNPC
 {
@@ -13,6 +14,7 @@ public class SiluetR2 : ModNPC
 	private static Asset<Texture2D> npcSprite;
 	float timer = 0f;
 	float offset = 0f;
+	float soundTimer = 0f;
 	public override void Load()
 	{
 		npcSprite = ModContent.Request<Texture2D>("TheBrokenScript/Content/NPCs/SiluetR2/SiluetR2", AssetRequestMode.AsyncLoad);
@@ -59,22 +61,23 @@ public class SiluetR2 : ModNPC
 		// Adjust horizontal velocity based on distance from nearest player
 		int closestPlayerID = NPC.FindClosestPlayer();
 		Player closestPlayerInstance = Main.player[closestPlayerID];
-		float distanceToPlayer = NPC.Center.X - closestPlayerInstance.Center.X;
+		float distanceToPlayer = Vector2.Distance(NPC.Center, closestPlayerInstance.Center);//NPC.Center.X - closestPlayerInstance.Center.X;
+		float directionX = NPC.Center.X - closestPlayerInstance.Center.X;
 		if (Math.Abs(distanceToPlayer) > 32f)
 		{
 			if (NPC.ai[0] == 1f)
 			{
-				NPC.velocity.X = distanceToPlayer > 0 ?
+				NPC.velocity.X = directionX > 0 ?
 					MathHelper.Lerp(NPC.velocity.X, -3.5f, 0.1f) :
 					MathHelper.Lerp(NPC.velocity.X, 3.5f, 0.1f);
 			}
 			else if (NPC.ai[0] == 0f)
 			{
-				NPC.velocity.X = distanceToPlayer > 0 ?
+				NPC.velocity.X = directionX > 0 ?
 					MathHelper.Lerp(NPC.velocity.X, -1.0f, 0.1f) :
 					MathHelper.Lerp(NPC.velocity.X, 1.0f, 0.1f);
 			}
-			NPC.spriteDirection = distanceToPlayer > 0 ? -1 : 1;
+			NPC.spriteDirection = directionX > 0 ? -1 : 1;
 		}
 		else
 		{
@@ -82,16 +85,32 @@ public class SiluetR2 : ModNPC
 		}
 		if (Math.Abs(distanceToPlayer) < (16f * 20f))
 		{
-			if (NPC.ai[0] != 1f)
-			{
-				NPC.ai[0] = 1f;
-			}
+			NPC.ai[0] = 1f;
 		}
-		if (NPC.ai[0] == 1f)
+		else
+		{
+			if (NPC.ai[0] == 1f && Main.netMode != NetmodeID.Server)
+			{
+				Main.instance.CameraModifiers.Add(new CameraSnapTo(Main.LocalPlayer.Center, FullName + "_return", () => true));
+			}
+			NPC.ai[0] = 0f;
+		}
+		if (NPC.ai[0] == 1f && Main.netMode != NetmodeID.Server)
 		{
 			float distance = Vector2.Distance(Main.LocalPlayer.Center, NPC.Center);
-			Vector2 target = distance < 16f * 20f ? NPC.Center : Main.LocalPlayer.Center;
-			Main.instance.CameraModifiers.Add(new CameraSnapTo(target, FullName, () => !NPC.active));
+			if (distance < 16f * 20f)
+			{
+				Main.instance.CameraModifiers.Add(new CameraSnapTo(NPC.Center, FullName, () => !NPC.active || NPC.ai[0] != 1f));
+				if (soundTimer < 1f)
+				{
+					soundTimer++;
+				}
+				else
+				{
+					soundTimer = 0f;
+					ModSounds.PlaySound("VoidRumbleLoop", 0.98f, (int)(NPC.Center.X / 16f), (int)(NPC.Center.Y / 16f));
+				}
+			}
 		}
 		Collision.StepUp(ref NPC.position, ref NPC.velocity, NPC.width, NPC.height, ref NPC.stepSpeed, ref NPC.gfxOffY);
 
