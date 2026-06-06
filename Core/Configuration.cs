@@ -8,6 +8,20 @@ namespace TheBrokenScript.Core
 	{
 		public static ClientConfig Instance;
 		public override ConfigScope Mode => ConfigScope.ClientSide;
+		[Header("Rendering")]
+		[BackgroundColor(50, 50, 50, 255)]
+		[DefaultValue(true)]
+		public bool ShowCorruptionVisionAssist { get; set; }
+		[BackgroundColor(50, 50, 50, 255)]
+		[Range(0f, 1f)]
+		[DefaultValue(0.6f)]
+		public float CorruptionVisionAssistHeight { get; set; }
+		[BackgroundColor(50, 50, 50, 255)]
+		[DefaultValue(true)]
+		public bool PosterizationShader { get; set; }
+		[BackgroundColor(50, 50, 50, 255)]
+		[DefaultValue(true)]
+		public bool TileAmbientParticles { get; set; }
 	}
 	[BackgroundColor(10, 10, 10, 200)]
 	public class ServerConfig : ModConfig
@@ -58,5 +72,9 @@ namespace TheBrokenScript.Core
 		[Range(1, 100)]
 		[DefaultValue(10)]
 		public int MaximumEntitiesAllowed { get; set; }
+		[BackgroundColor(200, 0, 0, 255)]
+		[Range(400, 9000)]
+		[DefaultValue(1600)]
+		public int EntitySpawnRate { get; set; }
 	}
 }
