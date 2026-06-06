@@ -37,6 +37,11 @@ public class CorruptedMoonExtraVisuals : ModSystem
 	{
 		orig(self);
 		var worldData = ModState.GetWorldData();
+		var config = ClientConfig.Instance;
+		if (config != null && config.ShowCorruptionVisionAssist == false)
+		{
+			return;
+		}
 		if (worldData.MoonData.MoonPhase == ModState.MoonPhase.Normal && !Main.IsItDay() || Main.IsItDay())
 		{
 			currentHelperOpacity = 0f;
@@ -55,11 +60,22 @@ public class CorruptedMoonExtraVisuals : ModSystem
 		Vector2 smoothScreenPosition = Main.Camera.UnscaledPosition;
 		SmoothX = MathHelper.Lerp(SmoothX, Main.LocalPlayer.TopLeft.X, 0.15f);
 		//SmoothY = MathHelper.Lerp(SmoothY, Main.LocalPlayer.TopLeft.Y + Main.rand.Next(0, 15), 0.15f);
-		SmoothY = MathHelper.Lerp(SmoothY, MathHelper.Clamp(
-			Main.LocalPlayer.TopLeft.Y - 400f,
-			(float)(Main.worldSurface * 16f * 0.6f), // adjust 0.6f for bringing the thing up or down
-			(float)(Main.worldSurface * 16f)
-			), 0.15f);
+		if (config == null)
+		{
+			SmoothY = MathHelper.Lerp(SmoothY, MathHelper.Clamp(
+				Main.LocalPlayer.TopLeft.Y - 400f,
+				(float)(Main.worldSurface * 16f * 0.6f), // adjust 0.6f for bringing the thing up or down
+				(float)(Main.worldSurface * 16f)
+				), 0.15f);
+		}
+		else
+		{
+			SmoothY = MathHelper.Lerp(SmoothY, MathHelper.Clamp(
+				Main.LocalPlayer.TopLeft.Y - 400f,
+				(float)(Main.worldSurface * 16f * config.CorruptionVisionAssistHeight), // adjust 0.6f for bringing the thing up or down
+				(float)(Main.worldSurface * 16f)
+				), 0.15f);
+		}
 		if (currentHelperOpacity < 1)
 		{
 			currentHelperOpacity += 0.001f;
