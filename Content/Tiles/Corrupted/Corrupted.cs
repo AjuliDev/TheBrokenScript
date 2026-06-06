@@ -2,6 +2,7 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using TheBrokenScript.Core;
 namespace TheBrokenScript.Content.Tiles.Corrupted;
 public class Corrupted : ModTile
 {
@@ -22,9 +23,20 @@ public class Corrupted : ModTile
 	public override void EmitParticles(int i, int j, Tile tile, short tileFrameX, short tileFrameY, Color tileLight, bool visible)
 	{
 		//base.EmitParticles(i, j, tile, tileFrameX, tileFrameY, tileLight, visible);
-		if (Main.rand.NextBool(5))
+		var config = ClientConfig.Instance;
+		if (config != null)
 		{
-			Dust.NewDust(new Vector2(i * 16f, j * 16f), 1, 1, ModContent.DustType<CorruptedDust>(), 0f, 0.5f, 0, Color.White, 25);
+			if (Main.rand.NextBool(5) && config.TileAmbientParticles)
+			{
+				Dust.NewDust(new Vector2(i * 16f, j * 16f), 1, 1, ModContent.DustType<CorruptedDust>(), 0f, 0.5f, 0, Color.White, 25);
+			}
+		}
+		else
+		{
+			if (Main.rand.NextBool(5))
+			{
+				Dust.NewDust(new Vector2(i * 16f, j * 16f), 1, 1, ModContent.DustType<CorruptedDust>(), 0f, 0.5f, 0, Color.White, 25);
+			}
 		}
 	}
 }
