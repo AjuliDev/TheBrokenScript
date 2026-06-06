@@ -44,7 +44,7 @@ public class ModEvents : ModSystem
 			return;
 		}
 		enabled[Main.rand.Next(enabled.Count)].StartEvent();
-		Main.NewText($"[DEBUG]: Executed random event.");
+		//Main.NewText($"[DEBUG]: Executed random event.");
 	}
 	public static void TriggerEvent(IModEvent modEvent)
 	{
@@ -58,7 +58,7 @@ public class ModEvents : ModSystem
 			return;
 		}
 		modEvent.StartEvent();
-		Main.NewText($"[DEBUG]: Executed event.");
+		//Main.NewText($"[DEBUG]: Executed event.");
 	}
 	private void ResetTimer()
 	{
@@ -77,6 +77,6 @@ public class ModEvents : ModSystem
 		}
 		randEventTargetTime = Main.rand.Next(min, max + 1);
 		randEventTimer = 0;
-		Main.NewText($"[DEBUG]: Reset timer to {randEventTargetTime}");
+		//Main.NewText($"[DEBUG]: Reset timer to {randEventTargetTime}");
 	}
 }
