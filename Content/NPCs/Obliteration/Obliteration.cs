@@ -142,7 +142,7 @@ public class Obliteration : ModNPC
 			NPC.rotation = MathHelper.Lerp(NPC.rotation, targetRotation, 0.1f);
 			closeTimer += 1;
 			Math.Clamp(closeTimer, 0, 300);
-			Main.NewText(closeTimer);
+			//Main.NewText(closeTimer);
 		}
 		else
 		{
