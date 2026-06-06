@@ -19,7 +19,10 @@ Configs: {
 			Tooltip: ""
 		}
 
-		Headers.Events: EVENTS
+		Headers: {
+			Events: EVENTS
+			Entities: ENTITIES AND APPARITIONS
+		}
 
 		MaximumRandomEventCooldown: {
 			Label: Maximum Random Event Cooldown
@@ -65,5 +68,22 @@ Configs: {
 			Label: Structure Apparitions
 			Tooltip: ""
 		}
+
+		MaximumEntitiesAllowed: {
+			Label: Maximum Entities Allowed (Overworld)
+			Tooltip: ""
+		}
+	}
+}
+
+Items: {
+	VoidstoneItem: {
+		DisplayName: Voidstone
+		Tooltip: This strange rock is light as a feather, but sounds and feels like iron.
+	}
+
+	RedObsidianItem: {
+		DisplayName: Red Obsidian
+		Tooltip: Something is off about this thing. I should get rid of it.
 	}
 }
