@@ -3,7 +3,7 @@ using System.Linq;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using TheBrokenScript.Content.Tiles.Null;
+using TheBrokenScript.Content.Tiles.Corrupted;
 using TheBrokenScript.Core;
 namespace TheBrokenScript.Content.Events;
 
@@ -43,7 +43,7 @@ public class Event_Mangle : IModEvent
 				}
 			}
 		}
-		nearbyTileTypes.Add((ushort)ModContent.TileType<Null>()); // To replace with corrupted tiles instead of null
+		nearbyTileTypes.Add((ushort)ModContent.TileType<Corrupted>()); // To replace with corrupted tiles instead of null
 		var tilePool = nearbyTileTypes.ToList();
 		for (int x = -radius; x <= radius; x++)
 		{
