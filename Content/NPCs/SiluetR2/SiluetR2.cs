@@ -83,32 +83,36 @@ public class SiluetR2 : ModNPC
 		{
 			NPC.velocity.X = MathHelper.Lerp(NPC.velocity.X, 0f, 0.1f);
 		}
-		if (Math.Abs(distanceToPlayer) < (16f * 20f))
+		bool followPresent = NPC.AnyNPCs(ModContent.NPCType<Follow.Follow>()); // TODO: Change with a modsystem for handling the camera, or find a better fix for the camera bugging when touched by Follow and chased by SiluetR2
+		if (!followPresent)
 		{
-			NPC.ai[0] = 1f;
-		}
-		else
-		{
+			if (Math.Abs(distanceToPlayer) < (16f * 20f))
+			{
+				NPC.ai[0] = 1f;
+			}
+			else
+			{
+				if (NPC.ai[0] == 1f && Main.netMode != NetmodeID.Server)
+				{
+					Main.instance.CameraModifiers.Add(new CameraSnapTo(Main.LocalPlayer.Center, FullName + "_return", () => true));
+				}
+				NPC.ai[0] = 0f;
+			}
 			if (NPC.ai[0] == 1f && Main.netMode != NetmodeID.Server)
 			{
-				Main.instance.CameraModifiers.Add(new CameraSnapTo(Main.LocalPlayer.Center, FullName + "_return", () => true));
-			}
-			NPC.ai[0] = 0f;
-		}
-		if (NPC.ai[0] == 1f && Main.netMode != NetmodeID.Server)
-		{
-			float distance = Vector2.Distance(Main.LocalPlayer.Center, NPC.Center);
-			if (distance < 16f * 20f)
-			{
-				Main.instance.CameraModifiers.Add(new CameraSnapTo(NPC.Center, FullName, () => !NPC.active || NPC.ai[0] != 1f));
-				if (soundTimer < 1f)
+				float distance = Vector2.Distance(Main.LocalPlayer.Center, NPC.Center);
+				if (distance < 16f * 20f)
 				{
-					soundTimer++;
-				}
-				else
-				{
-					soundTimer = 0f;
-					ModSounds.PlaySound("VoidRumbleLoop", 0.98f, (int)(NPC.Center.X / 16f), (int)(NPC.Center.Y / 16f));
+					Main.instance.CameraModifiers.Add(new CameraSnapTo(NPC.Center, FullName, () => !NPC.active || NPC.ai[0] != 1f));
+					if (soundTimer < 1f)
+					{
+						soundTimer++;
+					}
+					else
+					{
+						soundTimer = 0f;
+						ModSounds.PlaySound("VoidRumbleLoop", 0.98f, (int)(NPC.Center.X / 16f), (int)(NPC.Center.Y / 16f));
+					}
 				}
 			}
 		}
