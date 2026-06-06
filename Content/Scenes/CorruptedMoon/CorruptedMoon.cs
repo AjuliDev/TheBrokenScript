@@ -16,13 +16,28 @@ public class CorruptedMoon : ModSceneEffect
 	}
 	public override void SpecialVisuals(Player player, bool isActive)
 	{
-		if (isActive)
+		var config = ClientConfig.Instance;
+		if (config != null)
 		{
-			ModScenes.Activate("Posterize");
+			if (isActive && config.PosterizationShader)
+			{
+				ModScenes.Activate("Posterize");
+			}
+			else
+			{
+				ModScenes.Deactivate("Posterize");
+			}
 		}
 		else
 		{
-			ModScenes.Deactivate("Posterize");
+			if (isActive)
+			{
+				ModScenes.Activate("Posterize");
+			}
+			else
+			{
+				ModScenes.Deactivate("Posterize");
+			}
 		}
 	}
 	public override bool IsSceneEffectActive(Player player)
