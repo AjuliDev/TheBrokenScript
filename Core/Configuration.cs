@@ -51,5 +51,12 @@ namespace TheBrokenScript.Core
 		[BackgroundColor(169, 40, 212, 255)]
 		[DefaultValue(true)]
 		public bool Event_RandomStructure { get; set; }
+		[Header("Entities")]
+		[BackgroundColor(200, 0, 0, 255)]
+		[Slider]
+		[SliderColor(255, 255, 255, 255)]
+		[Range(1, 100)]
+		[DefaultValue(10)]
+		public int MaximumEntitiesAllowed { get; set; }
 	}
 }
