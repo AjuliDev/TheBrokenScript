@@ -4,7 +4,7 @@ Steam Workshop: https://steamcommunity.com/sharedfiles/filedetails/?id=362688470
 ### License & Credits
 *An original mod for Terraria, thematically inspired by Minecraft's The Broken Script and Mark101's ARG. All code and assets are independently created by AjuliDev.*
 
-> This mod is not encouraged or endorsed by the original creator or the community creators of Minecraft's The Broken Script, or Mark101.
+> This mod has been approved by the developers of Minecraft's The Broken Script.
 
 **Copyright (C) 2026 AjuliDev**
 
