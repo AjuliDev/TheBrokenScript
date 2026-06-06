@@ -2,6 +2,7 @@
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
+using TheBrokenScript.Content.Subworlds.Nowhere;
 using TheBrokenScript.Core;
 namespace TheBrokenScript.Content.Events;
 public class Event_GiftChest : IModEvent
@@ -14,7 +15,15 @@ public class Event_GiftChest : IModEvent
 		{
 			return;
 		}
-		SpawnChestNearPlayer(activePlayers[Main.rand.Next(activePlayers.Count)]);
+		Player targetPlayer = activePlayers[Main.rand.Next(activePlayers.Count)];
+
+		// Check biome.
+		if (targetPlayer.InModBiome<VoidstoneBiome>())
+		{
+			return;
+		}
+
+		SpawnChestNearPlayer(targetPlayer);
 	}
 	private int[] itemDropPool = [
 		ItemID.GoldBar,
