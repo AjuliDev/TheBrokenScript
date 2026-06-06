@@ -66,14 +66,15 @@ public class CorruptedMoonGlobalNPC : GlobalNPC
 		var config = ServerConfig.Instance;
 		if (worldData.MoonData.MoonPhase != ModState.MoonPhase.Normal && !Main.IsItDay()) // Checking light levels does not work that easily for this
 		{
-			spawnRate = 1600; //600
 			if (config == null)
 			{
 				maxSpawns = 10;
+				spawnRate = 1600; //600
 			}
 			else
 			{
 				maxSpawns = config.MaximumEntitiesAllowed;
+				spawnRate = config.EntitySpawnRate;
 			}
 		}
 		//if (worldData.MoonData.MoonPhase == ModState.MoonPhase.CorruptedRandom && !Main.IsItDay()) // TODO: Add some functionality around CorruptedRandom
