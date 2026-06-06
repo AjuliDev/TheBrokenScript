@@ -48,6 +48,7 @@ The [b]TModLoader[/b] discord server community for feedback on the functionality
 "SCP-x4x (Mind Leech)" Kevin MacLeod (incompetech.com)
 Licensed under Creative Commons: By Attribution 4.0 License
 http://creativecommons.org/licenses/by/4.0/ 
+[url=https://github.com/Auburn/FastNoiseLite?tab=MIT-1-ov-file#readme] FastNoiseLite.cs by Jordan Peck (jordan.me2@gmail.com) — MIT License[/url]
 
 [h3] Socials [/h3]
 [url=https://discord.gg/Rwk5MbV92r] Join my discord server! 

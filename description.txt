@@ -44,3 +44,4 @@ The TModLoader discord server community for feedback on the functionality and id
 "SCP-x4x (Mind Leech)" Kevin MacLeod (incompetech.com)
 Licensed under Creative Commons: By Attribution 4.0 License
 http://creativecommons.org/licenses/by/4.0/
+FastNoiseLite.cs by Jordan Peck (jordan.me2@gmail.com) — MIT License
