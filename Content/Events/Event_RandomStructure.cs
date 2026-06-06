@@ -5,6 +5,7 @@ using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
+using TheBrokenScript.Content.Subworlds.Nowhere;
 using TheBrokenScript.Core;
 
 namespace TheBrokenScript.Content.Events;
@@ -56,6 +57,12 @@ public class Event_RandomStructure : IModEvent
 			targetPlayer = Main.LocalPlayer;
 		}
 		if (targetPlayer == null)
+		{
+			return;
+		}
+
+		// Check biome.
+		if (targetPlayer.InModBiome<VoidstoneBiome>())
 		{
 			return;
 		}
