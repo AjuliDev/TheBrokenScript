@@ -1,1 +1,56 @@
-This description will show up on the steam page, check out https://steamcommunity.com/comment/Guide/formattinghelp.
+[h3] Version 0.23.0 - [i]Overhaul of The Basics[/i] [/h3]
+[h3] Description [/h3]
+The script was broken. What came after was worse. An original Terraria horror mod set in the aftermath of [b]The Broken Script's[/b] events.
+Built from the ground up, with a new world, a new story and the same dread.
+
+[h3] Features [/h3]
+[list]
+[*] [i] Entities: Execute, Follow, Obliteration, Observe, Possessor, SiluetR2, SubAnomalyOne [/i]
+[*] [i] Random Events and Structures [/i]
+[*] [i] Corrupted Moon and Corrupted Day events [/i]
+[*] [i] A new dimension, one of many to come... [/i]
+[*] [i] A configuration system for all non-mandatory gameplay functionality [/i]
+[*] [i] [b] Multiplayer compatible [/b][/i]
+[/list]
+
+[h3] Credits [/h3]
+AjuliDev for making [b]The Broken Script: Aftermath's [/b] code and assets.
+Minecraft's [b] The Broken Script Development Team [/b] for their hard work and blessing!
+[list]
+[*] [i] wendigodrip [/i]
+[*] [i] redstonewizard08 [/i]
+[*] [i] .yharim. [/i]
+[*] [i] alternate_benny [/i]
+[*] [i] choosingberry29 [/i]
+[*] [i] dominiklol [/i]
+[*] [i] ebridger [/i]
+[*] [i] pencilhtml [/i]
+[*] [i] eyae. [/i]
+[*] [i] jd__g [/i]
+[*] [i] mc.01 [/i]
+[*] [i] kaomoji5314 [/i]
+[*] [i] raevant.gg [/i]
+[*] [i] stevelocks [/i]
+[*] [i] tekkitdooood [/i]
+[*] [i] gary_go_brr [/i]
+[*] [i] zetos404 [/i]
+[*] [i] tornadicpolarity [/i]
+[*] [i] mpyritor [/i]
+[*] [i] rdh540 [/i]
+[*] [i] shadowmaster435 [/i]
+[*] [i] lungsfried_ [/i]
+[*] [i] eldritch [/i]
+[*] [i] l0v3m1st [/i]
+[i] + knightxtra [/i] from The Administration!
+[/list]
+Mark101's [b]ARG Youtube Series[/b] for being the main inspiration behind all things The Broken Script!
+The [b]TModLoader[/b] discord server community for feedback on the functionality and ideas behind this mod and what's to come!
+"SCP-x4x (Mind Leech)" Kevin MacLeod (incompetech.com)
+Licensed under Creative Commons: By Attribution 4.0 License
+http://creativecommons.org/licenses/by/4.0/ 
+
+[h3] Socials [/h3]
+[url=https://discord.gg/Rwk5MbV92r] Join my discord server! 
+[ Argon Bright - The Broken Script: Aftermath ][/url]
+[url=https://discord.gg/nullnullnullnull] Join Minecraft TBS development team's discord server! 
+[ The Broken Script ][/url]
