@@ -2,6 +2,7 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using TheBrokenScript.Content.Subworlds.Nowhere;
 using TheBrokenScript.Core;
 namespace TheBrokenScript.Content.Scenes.CorruptedMoon;
 public class CorruptedMoon : ModSceneEffect
@@ -44,6 +45,10 @@ public class CorruptedMoon : ModSceneEffect
 	{
 		var worldData = ModState.GetWorldData();
 		if (worldData.MoonData.MoonPhase != ModState.MoonPhase.Normal && !Main.IsItDay() || worldData.SunData.SunPhase != ModState.SunPhase.Normal && Main.IsItDay())
+		{
+			return true;
+		}
+		else if (player.InModBiome<VoidstoneBiome>())
 		{
 			return true;
 		}
