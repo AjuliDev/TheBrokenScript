@@ -9,7 +9,30 @@ NPCs: {
 }
 
 Configs: {
-	ClientConfig.DisplayName: Client Config
+	ClientConfig: {
+		DisplayName: Client Config
+		Headers.Rendering: RENDERING FEATURES
+
+		ShowCorruptionVisionAssist: {
+			Label: Corruption Vision Assist
+			Tooltip: Display a helper in dark surface areas to help in viewing entities. WARNING: Disabling this WILL affect your gameplay experience!
+		}
+
+		CorruptionVisionAssistHeight: {
+			Label: Corruption Vision Assist Height
+			Tooltip: Adjust the height at which to render the helper, relative to the median world surface.
+		}
+
+		PosterizationShader: {
+			Label: Corrupted Shader
+			Tooltip: Enable or disable the Corrupted Shader. WARNING: Disabling this WILL affect your gameplay experience!
+		}
+
+		TileAmbientParticles: {
+			Label: Tile Ambient Particles
+			Tooltip: Enable or disable the ambient particles that some tiles have. WARNING: Disabling this WILL affect your gameplay experience!
+		}
+	}
 
 	ServerConfig: {
 		DisplayName: Server Config
@@ -22,6 +45,7 @@ Configs: {
 		Headers: {
 			Events: EVENTS
 			Entities: ENTITIES AND APPARITIONS
+			Rendering: RENDERING FEATURES
 		}
 
 		MaximumRandomEventCooldown: {
@@ -72,6 +96,11 @@ Configs: {
 		MaximumEntitiesAllowed: {
 			Label: Maximum Entities Allowed (Overworld)
 			Tooltip: ""
+		}
+
+		EntitySpawnRate: {
+			Label: Entity Spawn Rate
+			Tooltip: A lower number means the timer triggers more often, thus, more spawns.
 		}
 	}
 }
