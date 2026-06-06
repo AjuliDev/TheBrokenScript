@@ -116,3 +116,10 @@ Items: {
 		Tooltip: Something is off about this thing. I should get rid of it.
 	}
 }
+
+Biomes: {
+	VoidstoneBiome: {
+		DisplayName: Voidstone Biome
+		TownNPCDialogueName: the Voidstone Biome
+	}
+}
