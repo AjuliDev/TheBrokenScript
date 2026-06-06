@@ -14,6 +14,8 @@ public class ModAssets : ModSystem
 	private static readonly string[] AssetPaths = [
 		"Common/Textures",
 		"Content/Scenes",
+		"Content/Subworlds",
+		"Content/Menu",
 		"Common/Sounds",
 		"Common/Effects",
 		];
