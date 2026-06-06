@@ -1,6 +1,9 @@
-﻿using Terraria;
+﻿using SubworldLibrary;
+using Terraria;
 using Terraria.ModLoader;
+using TheBrokenScript.Content.NPCs.Follow;
 using TheBrokenScript.Content.NPCs.SiluetR2;
+using TheBrokenScript.Content.Subworlds.Nowhere;
 using TheBrokenScript.Core;
 namespace TheBrokenScript.Common;
 public class TBSModPlayer : ModPlayer
@@ -11,6 +14,16 @@ public class TBSModPlayer : ModPlayer
 		if (npc.type == ModContent.NPCType<SiluetR2>())
 		{
 			ModSounds.PlaySound("SiluetAttackSimple", 0.4f, (int)Main.LocalPlayer.Center.X, (int)Main.LocalPlayer.Center.Y, 0.4f);
+		} else if (npc.type == ModContent.NPCType<Follow>())
+		{
+			if (SubworldCounter.NowhereEntryCooldown > 0) // Quick Patch to prevent crashes when multiple people attempt to join a starting server at the same time.
+			{
+				return;
+			}
+			else
+			{
+				SubworldSystem.Enter<Nowhere>();
+			}
 		}
 	}
 }
