@@ -1,10 +1,12 @@
-﻿using Terraria;
+﻿using System;
+using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 using TheBrokenScript.Core;
 namespace TheBrokenScript.Content.Scenes.CorruptedMoon;
 public class CorruptedMoon : ModSceneEffect
 {
-	public override int Music => 0;
+	public override int Music => SelectMusicTrack();
 	public override string MapBackground => "TheBrokenScript/Content/Scenes/CorruptedMoon/CorruptedMoonMapBackground";
 	public override ModWaterStyle WaterStyle => ModContent.GetInstance<WaterStyleCorruptedMoon>();
 	public override SceneEffectPriority Priority => SceneEffectPriority.Event;
@@ -34,5 +36,25 @@ public class CorruptedMoon : ModSceneEffect
 		{
 			return false;
 		}
+	}
+
+	public static readonly int SCPX4X = MusicLoader.GetMusicSlot("TheBrokenScript/Common/Music/SCP-x4x");
+
+	// Tuple with conditions and music ids
+	private static readonly (Func<bool> condition, int track)[] MusicRules = 
+		[
+			(() => Main.invasionType == 1, SCPX4X), // goblin army
+			(() => Main.invasionType == 2, SCPX4X), // snow legion
+			(() => Main.invasionType == 3, SCPX4X), // pirate invasion
+			(() => Main.invasionType == 4, SCPX4X), // martian madness
+		];
+
+	private int SelectMusicTrack()
+	{
+		foreach (var (condition, track) in MusicRules)
+		{
+			if (condition()) return track;
+		}
+		return 0; // no music, default
 	}
 }
