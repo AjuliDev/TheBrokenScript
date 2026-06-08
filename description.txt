@@ -1,1 +1,47 @@
-Modify this file with a description of your mod.
+Version 0.23.0 - Overhaul of The Basics
+Description
+The script was broken. What came after was worse. An original Terraria horror mod set in the aftermath of The Broken Script's events.
+Built from the ground up, with a new world, a new story and the same dread.
+
+Features
+Entities: Execute, Follow, Obliteration, Observe, Possessor, SiluetR2, SubAnomalyOne
+Random Events and Structures
+Corrupted Moon and Corrupted Day events
+A new dimension, one of many to come...
+A configuration system for all non-mandatory gameplay functionality
+Multiplayer compatible
+
+Credits
+AjuliDev for making The Broken Script: Aftermath's code and assets.
+Minecraft's The Broken Script Development Team for their hard work and blessing!
+wendigodrip
+redstonewizard08
+.yharim.
+alternate_benny
+choosingberry29
+dominiklol
+ebridger
+pencilhtml
+eyae.
+jd__g
+mc.01
+kaomoji5314
+raevant.gg
+stevelocks
+tekkitdooood
+gary_go_brr
+zetos404
+tornadicpolarity
+mpyritor
+rdh540
+shadowmaster435
+lungsfried_
+eldritch
+l0v3m1st
++ knightxtra from The Administration!
+Mark101's ARG Youtube Series for being the main inspiration behind all things The Broken Script!
+The TModLoader discord server community for feedback on the functionality and ideas behind this mod and what's to come!
+"SCP-x4x (Mind Leech)" Kevin MacLeod (incompetech.com)
+Licensed under Creative Commons: By Attribution 4.0 License
+http://creativecommons.org/licenses/by/4.0/
+FastNoiseLite.cs by Jordan Peck (jordan.me2@gmail.com) — MIT License

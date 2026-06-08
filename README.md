@@ -1,10 +1,10 @@
-# The Broken Script Reimagined ![Static Badge](https://img.shields.io/badge/TModLoader-Mod-brightgreen) ![Steam Downloads](https://img.shields.io/steam/downloads/3626884707) ![Static Badge](https://img.shields.io/badge/work-in%20progress-darkred) ![Static Badge](https://img.shields.io/badge/version-0.23-yellow)
+# The Broken Script: Aftermath ![Static Badge](https://img.shields.io/badge/TModLoader-Mod-brightgreen) ![Steam Downloads](https://img.shields.io/steam/downloads/3626884707) ![Static Badge](https://img.shields.io/badge/work-in%20progress-darkred) ![Static Badge](https://img.shields.io/badge/version-0.23-yellow)
 **by AjuliDev** <br/>
 Steam Workshop: https://steamcommunity.com/sharedfiles/filedetails/?id=3626884707
 ### License & Credits
 *An original mod for Terraria, thematically inspired by Minecraft's The Broken Script and Mark101's ARG. All code and assets are independently created by AjuliDev.*
 
-> This mod is not encouraged or endorsed by the original creator or the community creators of Minecraft's The Broken Script, or Mark101.
+> This mod has been approved by the developers of Minecraft's The Broken Script.
 
 **Copyright (C) 2026 AjuliDev**
 
@@ -18,7 +18,38 @@ Assets (art, audio, and other non-code files) are **not** covered by AGPLv3. If 
 Contact: @ajulidev on Discord or argon.bright+ajulidev@outlook.com
 
 #### Third-Party
-- ***FastNoiseLite.cs** by Jordan Peck (jordan.me2@gmail.com) — [MIT License](https://github.com/Auburn/FastNoiseLite)*
+- ***FastNoiseLite.cs** by Jordan Peck (jordan.me2@gmail.com) — [MIT License](https://github.com/Auburn/FastNoiseLite)* <br/>
+- Minecraft's The Broken Script Development Team for their hard work and blessing! <br/>
+wendigodrip <br/>
+redstonewizard08 <br/>
+.yharim. <br/>
+alternate_benny <br/>
+choosingberry29 <br/>
+dominiklol <br/>
+ebridger <br/>
+pencilhtml <br/>
+eyae. <br/>
+jd__g <br/>
+mc.01 <br/>
+kaomoji5314 <br/>
+raevant.gg <br/>
+stevelocks <br/>
+tekkitdooood <br/>
+gary_go_brr <br/>
+zetos404 <br/>
+tornadicpolarity <br/>
+mpyritor <br/>
+rdh540 <br/>
+shadowmaster435 <br/>
+lungsfried_ <br/>
+eldritch <br/>
+l0v3m1st <br/>
++ knightxtra from The Administration! <br/>
+Mark101's ARG Youtube Series for being the main inspiration behind all things The Broken Script! <br/>
+The TModLoader discord server community for feedback on the functionality and ideas behind this mod and what's to come! <br/>
+"SCP-x4x (Mind Leech)" Kevin MacLeod (incompetech.com) <br/>
+Licensed under Creative Commons: By Attribution 4.0 License <br/>
+http://creativecommons.org/licenses/by/4.0/ <br/>
 
 > Almost everything in this mod is made by AjuliDev. All other contributions are listed above.
 ### INCIDENT REPORT: CROSS-PLATFORM DIGITAL ANOMALY

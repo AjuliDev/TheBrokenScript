@@ -1,1 +1,125 @@
+NPCs: {
+	Execute.DisplayName: Execute
+	Observe.DisplayName: Observe
+	SubAnomalyOne.DisplayName: Sub Anomaly One
+	Obliteration.DisplayName: Obliteration
+	SiluetR2.DisplayName: Siluet R2
+	Follow.DisplayName: Follow
+	Possessor.DisplayName: Possessor
+}
 
+Configs: {
+	ClientConfig: {
+		DisplayName: Client Config
+		Headers.Rendering: RENDERING FEATURES
+
+		ShowCorruptionVisionAssist: {
+			Label: Corruption Vision Assist
+			Tooltip: Display a helper in dark surface areas to help in viewing entities. WARNING: Disabling this WILL affect your gameplay experience!
+		}
+
+		CorruptionVisionAssistHeight: {
+			Label: Corruption Vision Assist Height
+			Tooltip: Adjust the height at which to render the helper, relative to the median world surface.
+		}
+
+		PosterizationShader: {
+			Label: Corrupted Shader
+			Tooltip: Enable or disable the Corrupted Shader. WARNING: Disabling this WILL affect your gameplay experience!
+		}
+
+		TileAmbientParticles: {
+			Label: Tile Ambient Particles
+			Tooltip: Enable or disable the ambient particles that some tiles have. WARNING: Disabling this WILL affect your gameplay experience!
+		}
+	}
+
+	ServerConfig: {
+		DisplayName: Server Config
+
+		MinimumRandomEventCooldown: {
+			Label: Minimum Random Event Cooldown
+			Tooltip: ""
+		}
+
+		Headers: {
+			Events: EVENTS
+			Entities: ENTITIES AND APPARITIONS
+			Rendering: RENDERING FEATURES
+		}
+
+		MaximumRandomEventCooldown: {
+			Label: Maximum Random Event Cooldown
+			Tooltip: ""
+		}
+
+		DisableRandomEvents: {
+			Label: Disable Random Events
+			Tooltip: ""
+		}
+
+		Event_GiftChest: {
+			Label: Gift Chest Event
+			Tooltip: ""
+		}
+
+		Event_Mangle: {
+			Label: Mangle Event
+			Tooltip: ""
+		}
+
+		Event_KernelPanic: {
+			Label: BSOD Event
+			Tooltip: ""
+		}
+
+		Event_Faint: {
+			Label: Faint Event
+			Tooltip: ""
+		}
+
+		Event_MaliciousGift: {
+			Label: Malicious Gift Event
+			Tooltip: ""
+		}
+
+		Event_ChunkCorruptor: {
+			Label: Chunk Corruptor
+			Tooltip: ""
+		}
+
+		Event_RandomStructure: {
+			Label: Structure Apparitions
+			Tooltip: ""
+		}
+
+		MaximumEntitiesAllowed: {
+			Label: Maximum Entities Allowed (Overworld)
+			Tooltip: ""
+		}
+
+		EntitySpawnRate: {
+			Label: Entity Spawn Rate
+			Tooltip: A lower number means the timer triggers more often, thus, more spawns.
+		}
+	}
+}
+
+Items: {
+	VoidstoneItem: {
+		DisplayName: Voidstone
+		Tooltip: This strange rock is light as a feather, but sounds and feels like iron.
+	}
+
+	RedObsidianItem: {
+		DisplayName: Red Obsidian
+		Tooltip: Something is off about this thing. I should get rid of it.
+	}
+}
+
+Biomes: {
+	VoidstoneBiome: {
+		DisplayName: Voidstone Biome
+		TownNPCDialogueName: the Voidstone Biome
+	}
+}
