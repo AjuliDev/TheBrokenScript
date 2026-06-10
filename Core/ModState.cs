@@ -77,7 +77,15 @@ public class ModState : ModSystem
 	}
 	private void ResetWorldData()
 	{
-		worldData.Timings.NightsUntilCorrupted = 3;
+		var config = ServerConfig.Instance;
+		if (config != null)
+		{
+			worldData.Timings.NightsUntilCorrupted = config.NightsUntilMoonCorruption;
+		}
+		else
+		{
+			worldData.Timings.NightsUntilCorrupted = 3;
+		}
 		worldData.WorldState = WorldState.NewWorld;
 		worldData.Timings.TotalNightsPassed = 0;
 		worldData.MoonData.MoonPhase = MoonPhase.Normal;
@@ -92,10 +100,40 @@ public class ModState : ModSystem
 		{
 			return;
 		}
-		if (NPC.downedBoss3 && worldData.WorldState == WorldState.NewWorld)
+		var config = ServerConfig.Instance;
+		if (config != null)
 		{
-			worldData.WorldState = WorldState.Awakening;
-		} else if (worldData.WorldState >= WorldState.Awakening)
+			if (config.ReviewMode && worldData.WorldState == WorldState.NewWorld)
+			{
+				worldData.WorldState = WorldState.Awakening;
+			} else if (config.BossToDefeat == ServerConfig.BossSelection.EyeOfCthulhu && worldData.WorldState == WorldState.NewWorld)
+			{
+				if (NPC.downedBoss1) // Default Check
+				{
+					worldData.WorldState = WorldState.Awakening;
+				}
+			} else if (config.BossToDefeat == ServerConfig.BossSelection.WorldEvilBoss && worldData.WorldState == WorldState.NewWorld)
+			{
+				if (NPC.downedBoss2) // Default Check
+				{
+					worldData.WorldState = WorldState.Awakening;
+				}
+			} else if (config.BossToDefeat == ServerConfig.BossSelection.Skeletron && worldData.WorldState == WorldState.NewWorld)
+			{
+				if (NPC.downedBoss3) // Default Check
+				{
+					worldData.WorldState = WorldState.Awakening;
+				}
+			}
+		}
+		else
+		{
+			if (NPC.downedBoss3 && worldData.WorldState == WorldState.NewWorld) // Default Check
+			{
+				worldData.WorldState = WorldState.Awakening;
+			}
+		}
+		if (worldData.WorldState >= WorldState.Awakening)
 		{
 			if (worldData.Timings.TotalNightsPassed >= worldData.Timings.NightsUntilCorrupted)
 			{
