@@ -27,7 +27,24 @@ namespace TheBrokenScript.Core
 	public class ServerConfig : ModConfig
 	{
 		public static ServerConfig Instance;
+		public enum BossSelection
+		{
+			EyeOfCthulhu = 1,
+			WorldEvilBoss = 2,
+			Skeletron = 3
+		}
 		public override ConfigScope Mode => ConfigScope.ServerSide;
+		[Header("Awakening")]
+		[BackgroundColor(26, 26, 26, 255)]
+		[DefaultValue(BossSelection.Skeletron)]
+		public BossSelection BossToDefeat { get; set; }
+		[BackgroundColor(26, 26, 26, 255)]
+		[DefaultValue(3)]
+		[Range(1, 30)]
+		public int NightsUntilMoonCorruption { get; set; }
+		[BackgroundColor(26, 26, 26, 255)]
+		[DefaultValue(false)]
+		public bool ReviewMode { get; set; }
 		[Header("Events")]
 		[BackgroundColor(169, 40, 212, 255)]
 		[DefaultValue(false)]
