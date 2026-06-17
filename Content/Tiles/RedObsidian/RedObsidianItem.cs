@@ -2,7 +2,7 @@
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace TheBrokenScript.Content.Tiles.RedObsidian;
+namespace thebrokenscript.Content.Tiles.RedObsidian;
 
 public class RedObsidianItem : ModItem
 {

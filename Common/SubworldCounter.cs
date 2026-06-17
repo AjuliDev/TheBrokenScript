@@ -2,7 +2,7 @@
 using Terraria;
 using Terraria.ModLoader;
 
-namespace TheBrokenScript.Common;
+namespace thebrokenscript.Common;
 public class SubworldCounter : ModSystem
 {
 	public static int NowhereEntryCooldown = 0;

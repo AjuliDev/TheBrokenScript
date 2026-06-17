@@ -2,8 +2,8 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using TheBrokenScript.Core;
-namespace TheBrokenScript.Content.Tiles.Null;
+using thebrokenscript.Core;
+namespace thebrokenscript.Content.Tiles.Null;
 public class Null : ModTile
 {
 	public override void SetStaticDefaults()

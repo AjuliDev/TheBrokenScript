@@ -2,7 +2,7 @@
 using System;
 using Terraria;
 using Terraria.ModLoader;
-namespace TheBrokenScript.Content.Tiles.Null;
+namespace thebrokenscript.Content.Tiles.Null;
 public class NullDust : ModDust
 {
 	public override void OnSpawn(Dust dust)

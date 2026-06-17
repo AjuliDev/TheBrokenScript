@@ -3,9 +3,9 @@ using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
-using TheBrokenScript.Content.Tiles.Corrupted;
-using TheBrokenScript.Core;
-namespace TheBrokenScript.Content.Tiles.Voidstone;
+using thebrokenscript.Content.Tiles.Corrupted;
+using thebrokenscript.Core;
+namespace thebrokenscript.Content.Tiles.Voidstone;
 public class Voidstone : ModTile
 {
 	public override void SetStaticDefaults()
@@ -20,7 +20,7 @@ public class Voidstone : ModTile
 		Main.tileMergeDirt[Type] = false;
 		MinPick = 50;
 		DustType = ModContent.DustType<CorruptedDust>();
-		HitSound = new SoundStyle("TheBrokenScript/Common/Sounds/VoidstoneHit");
+		HitSound = new SoundStyle("thebrokenscript/Common/Sounds/VoidstoneHit");
 		AddMapEntry(new Color(209, 209, 201));
 	}
 }

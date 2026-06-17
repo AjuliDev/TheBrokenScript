@@ -2,9 +2,9 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using TheBrokenScript.Common.EventHelpers;
-using TheBrokenScript.Core;
-namespace TheBrokenScript.Content.Events;
+using thebrokenscript.Common.EventHelpers;
+using thebrokenscript.Core;
+namespace thebrokenscript.Content.Events;
 public class Event_KernelPanic : IModEvent
 {
 	public bool IsEnabled(ServerConfig config) => config.Event_KernelPanic;
@@ -25,7 +25,7 @@ public class Event_KernelPanic : IModEvent
 				return;
 			}
 			int targetPlayer = activePlayers[Main.rand.Next(activePlayers.Count)];
-			ModPacket packet = ModContent.GetInstance<TheBrokenScript>().GetPacket();
+			ModPacket packet = ModContent.GetInstance<thebrokenscript>().GetPacket();
 			packet.Write((byte)ModPacketHandler.PacketType.KernelPanicCastToClient);
 			packet.Send(targetPlayer, -1);
 		} else if (Main.netMode == NetmodeID.SinglePlayer)

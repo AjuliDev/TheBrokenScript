@@ -2,9 +2,9 @@
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
-using TheBrokenScript.Content.Subworlds.Nowhere;
-using TheBrokenScript.Core;
-namespace TheBrokenScript.Content.Events;
+using thebrokenscript.Content.Subworlds.Nowhere;
+using thebrokenscript.Core;
+namespace thebrokenscript.Content.Events;
 public class Event_GiftChest : IModEvent
 {
 	public bool IsEnabled(ServerConfig config) => config.Event_GiftChest;

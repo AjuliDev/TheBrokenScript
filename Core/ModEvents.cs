@@ -1,9 +1,9 @@
 ﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using TheBrokenScript.Content.Events;
-using TheBrokenScript.Core;
-namespace TheBrokenScript.Core;
+using thebrokenscript.Content.Events;
+using thebrokenscript.Core;
+namespace thebrokenscript.Core;
 public class ModEvents : ModSystem
 {
 	private int randEventTimer, randEventTargetTime;

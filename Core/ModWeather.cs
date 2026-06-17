@@ -4,7 +4,7 @@ using ReLogic.Content;
 using System;
 using Terraria;
 using Terraria.ModLoader;
-namespace TheBrokenScript.Core;
+namespace thebrokenscript.Core;
 public class ModWeather : ModSystem
 {
 	public override void Load()

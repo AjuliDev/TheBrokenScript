@@ -5,9 +5,9 @@ using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
-using TheBrokenScript.Core;
+using thebrokenscript.Core;
 
-namespace TheBrokenScript.Content.Menu;
+namespace thebrokenscript.Content.Menu;
 public class MainMenu : ModMenu
 {
 	private bool JoinDiscordClicked = false;

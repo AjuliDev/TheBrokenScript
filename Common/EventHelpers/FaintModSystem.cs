@@ -5,9 +5,9 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.UI;
-using TheBrokenScript.Core;
+using thebrokenscript.Core;
 
-namespace TheBrokenScript.Common.EventHelpers;
+namespace thebrokenscript.Common.EventHelpers;
 
 public class FaintModSystem : ModSystem
 {

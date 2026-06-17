@@ -3,9 +3,9 @@ using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
-using TheBrokenScript.Content.Tiles.Corrupted;
-using TheBrokenScript.Core;
-namespace TheBrokenScript.Content.Tiles.RedObsidian;
+using thebrokenscript.Content.Tiles.Corrupted;
+using thebrokenscript.Core;
+namespace thebrokenscript.Content.Tiles.RedObsidian;
 
 public class RedObsidian : ModTile
 {

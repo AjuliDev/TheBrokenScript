@@ -1,6 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using System;
-namespace TheBrokenScript.Common;
+namespace thebrokenscript.Common;
 public class FABRIK
 {
 	public Vector2[] Joints; // Positions of each joint

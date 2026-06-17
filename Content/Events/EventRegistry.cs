@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using TheBrokenScript.Core;
-namespace TheBrokenScript.Content.Events;
+using thebrokenscript.Core;
+namespace thebrokenscript.Content.Events;
 public static class EventRegistry
 {
 	public static readonly List<IModEvent> All = new()

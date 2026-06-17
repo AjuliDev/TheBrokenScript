@@ -6,9 +6,9 @@ using System.Linq;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using TheBrokenScript.Common;
-using TheBrokenScript.Content.Tiles.Null;
-namespace TheBrokenScript.Content.NPCs.Observe;
+using thebrokenscript.Common;
+using thebrokenscript.Content.Tiles.Null;
+namespace thebrokenscript.Content.NPCs.Observe;
 
 public class Observe : ModNPC
 {
@@ -100,8 +100,8 @@ public class Observe : ModNPC
 	public override void Load()
 	{
 		BoneTextures = new Asset<Texture2D>[2];
-		BoneTextures[0] = ModContent.Request<Texture2D>("TheBrokenScript/Content/NPCs/Observe/Observe_Head");
-		BoneTextures[1] = ModContent.Request<Texture2D>("TheBrokenScript/Content/NPCs/Observe/Observe_Tentacle");
+		BoneTextures[0] = ModContent.Request<Texture2D>("thebrokenscript/Content/NPCs/Observe/Observe_Head");
+		BoneTextures[1] = ModContent.Request<Texture2D>("thebrokenscript/Content/NPCs/Observe/Observe_Tentacle");
 	}
 	public override void Unload()
 	{

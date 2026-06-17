@@ -5,11 +5,11 @@ using Terraria;
 using Terraria.IO;
 using Terraria.ModLoader;
 using Terraria.WorldBuilding;
-using TheBrokenScript.Content.Tiles.Corrupted;
-using TheBrokenScript.Content.Tiles.Null;
-using TheBrokenScript.Content.Tiles.RedObsidian;
-using TheBrokenScript.Content.Tiles.Voidstone;
-namespace TheBrokenScript.Content.Subworlds.Nowhere;
+using thebrokenscript.Content.Tiles.Corrupted;
+using thebrokenscript.Content.Tiles.Null;
+using thebrokenscript.Content.Tiles.RedObsidian;
+using thebrokenscript.Content.Tiles.Voidstone;
+namespace thebrokenscript.Content.Subworlds.Nowhere;
 public class FillTerrain : GenPass
 {
 	public FillTerrain() : base("Terrain", 1) { }

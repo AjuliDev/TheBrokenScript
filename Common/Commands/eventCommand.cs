@@ -2,10 +2,10 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using TheBrokenScript.Content.Events;
-using TheBrokenScript.Core;
+using thebrokenscript.Content.Events;
+using thebrokenscript.Core;
 
-namespace TheBrokenScript.Common.Commands;
+namespace thebrokenscript.Common.Commands;
 
 public class eventCommand : ModCommand // COMMANDS ARE RUNNING IN CLIENT CONTEXT, DO NOT FORGET, I SPENT TWO DAYS BEFORE I FIGURED THIS BULLSHIT
 {
@@ -35,7 +35,7 @@ public class eventCommand : ModCommand // COMMANDS ARE RUNNING IN CLIENT CONTEXT
 		}
 		if (Main.netMode == NetmodeID.MultiplayerClient)
 		{
-			ModPacket packet = ModContent.GetInstance<TheBrokenScript>().GetPacket();
+			ModPacket packet = ModContent.GetInstance<thebrokenscript>().GetPacket();
 			packet.Write((byte)ModPacketHandler.PacketType.TriggerEvent);
 			packet.Write(eventName);
 			packet.Send(); // Client to Server, parameters irrelevant

@@ -2,7 +2,7 @@
 using System;
 using Terraria;
 using Terraria.ModLoader;
-namespace TheBrokenScript.Content.Tiles.Corrupted;
+namespace thebrokenscript.Content.Tiles.Corrupted;
 public class CorruptedDust : ModDust
 {
 	public override void OnSpawn(Dust dust)

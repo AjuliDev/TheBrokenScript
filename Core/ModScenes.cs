@@ -2,7 +2,7 @@
 using Terraria.Graphics.Effects;
 using Terraria.Graphics.Shaders;
 using Terraria.ModLoader;
-namespace TheBrokenScript.Core;
+namespace thebrokenscript.Core;
 public class ModScenes : ModSystem
 {
 	public override void Load()

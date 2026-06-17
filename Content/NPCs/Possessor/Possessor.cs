@@ -6,11 +6,11 @@ using System.IO;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using TheBrokenScript.Core;
-namespace TheBrokenScript.Content.NPCs.Possessor;
+using thebrokenscript.Core;
+namespace thebrokenscript.Content.NPCs.Possessor;
 public class Possessor : ModNPC
 {
-	public override string Texture => "TheBrokenScript/Common/Textures/transparent_pixel";
+	public override string Texture => "thebrokenscript/Common/Textures/transparent_pixel";
 	private static Asset<Texture2D>[] Textures;
 	private ref float aiState => ref NPC.ai[0];
 	private ref float aiAnchorX => ref NPC.ai[1];
@@ -23,8 +23,8 @@ public class Possessor : ModNPC
 	public override void Load()
 	{
 		Textures = new Asset<Texture2D>[2];
-		Textures[0] = ModContent.Request<Texture2D>("TheBrokenScript/Content/NPCs/Possessor/Possessor_Head");
-		Textures[1] = ModContent.Request<Texture2D>("TheBrokenScript/Content/NPCs/Possessor/Possessor_Leak");
+		Textures[0] = ModContent.Request<Texture2D>("thebrokenscript/Content/NPCs/Possessor/Possessor_Head");
+		Textures[1] = ModContent.Request<Texture2D>("thebrokenscript/Content/NPCs/Possessor/Possessor_Leak");
 	}
 	public override void Unload()
 	{
@@ -109,7 +109,7 @@ public class Possessor : ModNPC
 						p.GetModPlayer<PossessorPlayer>().Possessed = true;
 					else
 					{
-						ModPacket packet = ModContent.GetInstance<TheBrokenScript>().GetPacket();
+						ModPacket packet = ModContent.GetInstance<thebrokenscript>().GetPacket();
 						packet.Write((byte)ModPacketHandler.PacketType.SyncPossessorPlayer);
 						packet.Write(i);
 						packet.Send(toClient: i);

@@ -2,7 +2,7 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-namespace TheBrokenScript.Content.NPCs.Possessor;
+namespace thebrokenscript.Content.NPCs.Possessor;
 public class PossessorPlayer : ModPlayer
 {
 	public bool Possessed;

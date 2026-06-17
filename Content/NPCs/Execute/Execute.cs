@@ -5,11 +5,11 @@ using System;
 using System.IO;
 using Terraria;
 using Terraria.ModLoader;
-namespace TheBrokenScript.Content.NPCs.Execute;
+namespace thebrokenscript.Content.NPCs.Execute;
 
 public class Execute : ModNPC
 {
-	public override string Texture => "TheBrokenScript/Common/Textures/transparent_pixel";
+	public override string Texture => "thebrokenscript/Common/Textures/transparent_pixel";
 	public static Asset<Texture2D>[] BoneTextures;
 	Common.BipedRig Armature = new Common.BipedRig();
 	private bool isArmatureReady => Armature.BoneChains != null;
@@ -155,11 +155,11 @@ public class Execute : ModNPC
 	public override void Load()
 	{
 		BoneTextures = new Asset<Texture2D>[6];
-		BoneTextures[0] = ModContent.Request<Texture2D>("TheBrokenScript/Content/NPCs/Execute/Execute_Torso");
-		BoneTextures[1] = ModContent.Request<Texture2D>("TheBrokenScript/Content/NPCs/Execute/Execute_Head");
-		BoneTextures[2] = ModContent.Request<Texture2D>("TheBrokenScript/Content/NPCs/Execute/Execute_Arm");
+		BoneTextures[0] = ModContent.Request<Texture2D>("thebrokenscript/Content/NPCs/Execute/Execute_Torso");
+		BoneTextures[1] = ModContent.Request<Texture2D>("thebrokenscript/Content/NPCs/Execute/Execute_Head");
+		BoneTextures[2] = ModContent.Request<Texture2D>("thebrokenscript/Content/NPCs/Execute/Execute_Arm");
 		BoneTextures[3] = BoneTextures[2];
-		BoneTextures[4] = ModContent.Request<Texture2D>("TheBrokenScript/Content/NPCs/Execute/Execute_Leg");
+		BoneTextures[4] = ModContent.Request<Texture2D>("thebrokenscript/Content/NPCs/Execute/Execute_Leg");
 		BoneTextures[5] = BoneTextures[4];
 	}
 	public override void Unload()

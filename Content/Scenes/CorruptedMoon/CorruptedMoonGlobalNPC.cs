@@ -4,8 +4,8 @@ using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ModLoader.Config;
-using TheBrokenScript.Core;
-namespace TheBrokenScript.Content.Scenes.CorruptedMoon;
+using thebrokenscript.Core;
+namespace thebrokenscript.Content.Scenes.CorruptedMoon;
 public class CorruptedMoonGlobalNPC : GlobalNPC
 {
 	public static HashSet<int> TBSTypes = new HashSet<int>
@@ -92,7 +92,7 @@ public class CorruptedMoonGlobalNPC : GlobalNPC
 		{
 			if (Main.dedServ)
 			{
-				ModPacket packet = ModContent.GetInstance<TheBrokenScript>().GetPacket();
+				ModPacket packet = ModContent.GetInstance<thebrokenscript>().GetPacket();
 				packet.Write((byte)ModPacketHandler.PacketType.RequestCaveSound);
 				packet.Write((int)(npc.Center.X / 16f));
 				packet.Write((int)(npc.Center.Y / 16f));

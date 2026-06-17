@@ -1,5 +1,5 @@
 displayName = The Broken Script: Aftermath
-name = TheBrokenScript
+name = thebrokenscript
 author = AjuliDev
 version = 0.23.0
 buildIgnore = Source/*

@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using Terraria.ModLoader.Config;
 
-namespace TheBrokenScript.Core
+namespace thebrokenscript.Core
 {
 	[BackgroundColor(10, 10, 10, 200)]
 	public class ClientConfig : ModConfig

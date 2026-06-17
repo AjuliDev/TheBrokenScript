@@ -6,12 +6,12 @@ using System.Linq;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using TheBrokenScript.Common;
-namespace TheBrokenScript.Content.NPCs.SubAnomalyOne;
+using thebrokenscript.Common;
+namespace thebrokenscript.Content.NPCs.SubAnomalyOne;
 
 public class SubAnomalyOne : ModNPC
 {
-	public override string Texture => "TheBrokenScript/Common/Textures/transparent_pixel";
+	public override string Texture => "thebrokenscript/Common/Textures/transparent_pixel";
 	public static Asset<Texture2D> Quad;
 	private Vector2[] quadPositions = new Vector2[12];
 	private float[] quadScales = new float[12];
@@ -19,7 +19,7 @@ public class SubAnomalyOne : ModNPC
 	float timer = 0f;
 	public override void Load()
 	{
-		Quad = ModContent.Request<Texture2D>("TheBrokenScript/Content/NPCs/SubAnomalyOne/SubAnomalyOne_Quad");
+		Quad = ModContent.Request<Texture2D>("thebrokenscript/Content/NPCs/SubAnomalyOne/SubAnomalyOne_Quad");
 	}
 	public override void Unload()
 	{

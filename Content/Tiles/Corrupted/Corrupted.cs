@@ -2,8 +2,8 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using TheBrokenScript.Core;
-namespace TheBrokenScript.Content.Tiles.Corrupted;
+using thebrokenscript.Core;
+namespace thebrokenscript.Content.Tiles.Corrupted;
 public class Corrupted : ModTile
 {
 	public override void SetStaticDefaults()

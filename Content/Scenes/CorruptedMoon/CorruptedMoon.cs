@@ -2,13 +2,13 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using TheBrokenScript.Content.Subworlds.Nowhere;
-using TheBrokenScript.Core;
-namespace TheBrokenScript.Content.Scenes.CorruptedMoon;
+using thebrokenscript.Content.Subworlds.Nowhere;
+using thebrokenscript.Core;
+namespace thebrokenscript.Content.Scenes.CorruptedMoon;
 public class CorruptedMoon : ModSceneEffect
 {
 	public override int Music => SelectMusicTrack();
-	public override string MapBackground => "TheBrokenScript/Content/Scenes/CorruptedMoon/CorruptedMoonMapBackground";
+	public override string MapBackground => "thebrokenscript/Content/Scenes/CorruptedMoon/CorruptedMoonMapBackground";
 	public override ModWaterStyle WaterStyle => ModContent.GetInstance<WaterStyleCorruptedMoon>();
 	public override SceneEffectPriority Priority => SceneEffectPriority.Event;
 	public override float GetWeight(Player player)
@@ -58,7 +58,7 @@ public class CorruptedMoon : ModSceneEffect
 		}
 	}
 
-	public static readonly int SCPX4X = MusicLoader.GetMusicSlot("TheBrokenScript/Common/Music/SCP-x4x");
+	public static readonly int SCPX4X = MusicLoader.GetMusicSlot("thebrokenscript/Common/Music/SCP-x4x");
 
 	// Tuple with conditions and music ids
 	private static readonly (Func<bool> condition, int track)[] MusicRules = 

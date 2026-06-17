@@ -1,5 +1,5 @@
-﻿using TheBrokenScript.Core;
-namespace TheBrokenScript.Content.Events;
+﻿using thebrokenscript.Core;
+namespace thebrokenscript.Content.Events;
 public interface IModEvent
 {
 	bool IsEnabled(ServerConfig config);
