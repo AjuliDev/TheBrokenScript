@@ -1,17 +1,43 @@
-[h3] Version 0.23.0 - [i]Overhaul of The Basics[/i] [/h3]
-[h3] Description [/h3]
-The script was broken. What came after was worse. An original Terraria horror mod set in the aftermath of [b]The Broken Script's[/b] events.
-Built from the ground up, with a new world, a new story and the same dread.
+[h1]Welcome to The Broken Script: Aftermath.[/h1]
 
-[h3] Features [/h3]
-[list]
-[*] [i] Entities: Execute, Follow, Obliteration, Observe, Possessor, SiluetR2, SubAnomalyOne [/i]
-[*] [i] Random Events and Structures [/i]
-[*] [i] Corrupted Moon and Corrupted Day events [/i]
-[*] [i] A new dimension, one of many to come... [/i]
-[*] [i] A configuration system for all non-mandatory gameplay functionality [/i]
-[*] [i] [b] Multiplayer compatible [/b][/i]
-[/list]
+[h3] The mod begins affecting your world once you defeat Skeletron, unless you change it in the config. [/h3]
+
+[h3] Notice for Reviewers [/h3]
+If you wish to review the mod without defeating Skeletron and without waiting the grace nights until the corruption starts, do the following:
+In Server Config:
+Set Nights Until Corrupted Moons to 0;
+Set Mod Review Mode / Skip Boss Trigger to On.
+
+[h2]Features:[/h2]
+Entities (Execute, Follow, Obliteration, Observe, Possessor, SiluetR2, SubAnomalyOne)
+Random Events
+Structures made by me and the TBS:Aftermath community.
+Corrupted Moon & Corrupted Day events
+One subworld (excluded from multiplayer currently)
+Multiplayer compatibility system-wide.
+Commands for events and random events.
+Client-side and Server-side settings.
+Custom shading for Corrupted Events and Locations.
+ARG Elements?
+
+[h2]Description:[/h2]
+The Broken Script: Aftermath is an original TModLoader mod set in the aftermath of The Broken Script's / Mark101's events.
+It is built from the ground up solely by me (AjuliDev), with occasional debugging help from other developers such as GabeHasWon, which helped me save a lot of time.
+It's The Broken Script, in a new world, a new setting, but with the same dread.
+
+[h2]Story:[/h2]
+A group of five friends was operating a local neighborhood server, running both Terraria and Minecraft. The Minecraft server session was modded, and running a version of Spectrum11.jar. The problem with that version, is that it was not the one distributed by the original developers, and as such, it's MD5 hash was different, and they knew about this, calling it "recreational deception". This would make all the difference, because after a few days of playing, a cascading degradation phenomenon occurred, designated Integrity, and it manifested throughout the entire server infrastructure, not only corrupting data, but taking over the systems, the players computers as well as the players themselves.
+The players were found in a catatonic state at their desks, unresponsive.
+The cascading degradation phenomenon, known as Integrity, without any barriers in it's way, began probing adjacent services, finding the Terraria server, which maintained one active connection.
+Over time, the entire ecosystem which Terraria ran upon, as well as Terraria, was consumed.
+Countermeasures must be deployed, because as soon as a new world is started, weird phenomena start to happen.
+
+[h2]Social Links:[/h2]
+[url=https://discord.gg/Rwk5MbV92r] Join my discord server! 
+[ Argon Bright - The Broken Script: Aftermath ][/url]
+
+[url=https://discord.gg/nullnullnullnull] Join Minecraft TBS development team's discord server!
+[ Minecraft The Broken Script ][/url]
 
 [h3] Credits [/h3]
 AjuliDev for making [b]The Broken Script: Aftermath's [/b] code and assets.
@@ -48,10 +74,5 @@ The [b]TModLoader[/b] discord server community for feedback on the functionality
 "SCP-x4x (Mind Leech)" Kevin MacLeod (incompetech.com)
 Licensed under Creative Commons: By Attribution 4.0 License
 http://creativecommons.org/licenses/by/4.0/ 
-[url=https://github.com/Auburn/FastNoiseLite?tab=MIT-1-ov-file#readme] FastNoiseLite.cs by Jordan Peck (jordan.me2@gmail.com) — MIT License[/url]
-
-[h3] Socials [/h3]
-[url=https://discord.gg/Rwk5MbV92r] Join my discord server! 
-[ Argon Bright - The Broken Script: Aftermath ][/url]
-[url=https://discord.gg/nullnullnullnull] Join Minecraft TBS development team's discord server! 
-[ The Broken Script ][/url]
+[quote=tModLoader TheBrokenScript]
+Developed By AjuliDev[/quote]
