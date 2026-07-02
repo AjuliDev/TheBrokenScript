@@ -74,5 +74,3 @@ The [b]TModLoader[/b] discord server community for feedback on the functionality
 "SCP-x4x (Mind Leech)" Kevin MacLeod (incompetech.com)
 Licensed under Creative Commons: By Attribution 4.0 License
 http://creativecommons.org/licenses/by/4.0/ 
-[quote=tModLoader TheBrokenScript]
-Developed By AjuliDev[/quote]

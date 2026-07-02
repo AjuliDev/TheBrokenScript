@@ -43,9 +43,25 @@ Configs: {
 		}
 
 		Headers: {
+			Awakening: AWAKENING SETTINGS
 			Events: EVENTS
 			Entities: ENTITIES AND APPARITIONS
 			Rendering: RENDERING FEATURES
+		}
+
+		BossToDefeat: {
+			Label: Corruption Trigger Boss
+			Tooltip: This boss is what will trigger the awakening (w.i.p) in the mod, as well as the corruption of the world.
+		}
+
+		NightsUntilMoonCorruption: {
+			Label: Nights Until Corrupted Moons
+			Tooltip: The minimum amount of nights to pass until corrupted moons can occur.
+		}
+
+		ReviewMode: {
+			Label: Mod Review Mode / Skip Boss Trigger
+			Tooltip: Enable this if you want the mod to start right away, without waiting for the Corruption Trigger Boss to die.
 		}
 
 		MaximumRandomEventCooldown: {
@@ -101,6 +117,25 @@ Configs: {
 		EntitySpawnRate: {
 			Label: Entity Spawn Rate
 			Tooltip: A lower number means the timer triggers more often, thus, more spawns.
+		}
+	}
+
+	BossSelection: {
+		Tooltip: ""
+
+		EyeOfCthulhu: {
+			Label: Eye Of Cthulhu
+			Tooltip: ""
+		}
+
+		WorldEvilBoss: {
+			Label: World Evil Boss
+			Tooltip: ""
+		}
+
+		Skeletron: {
+			Label: Skeletron
+			Tooltip: ""
 		}
 	}
 }
