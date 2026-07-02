@@ -2,6 +2,12 @@
 
 [h3] The mod begins affecting your world once you defeat Skeletron, unless you change it in the config. [/h3]
 
+[h3] Notice for Reviewers [/h3]
+If you wish to review the mod without defeating Skeletron and without waiting the grace nights until the corruption starts, do the following:
+In Server Config:
+Set Nights Until Corrupted Moons to 0;
+Set Mod Review Mode / Skip Boss Trigger to On.
+
 [h2]Features:[/h2]
 Entities (Execute, Follow, Obliteration, Observe, Possessor, SiluetR2, SubAnomalyOne)
 Random Events

@@ -1,5 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
-namespace TheBrokenScript.Common;
+namespace thebrokenscript.Common;
 public struct BipedRig
 {
 	public struct BoneRootStr

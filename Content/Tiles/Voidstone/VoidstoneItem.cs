@@ -1,7 +1,7 @@
 ﻿using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace TheBrokenScript.Content.Tiles.Voidstone
+namespace thebrokenscript.Content.Tiles.Voidstone
 {
 	public class VoidstoneItem : ModItem
 	{

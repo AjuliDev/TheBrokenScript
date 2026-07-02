@@ -1,10 +1,10 @@
 ﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using TheBrokenScript.Content.Events;
-using TheBrokenScript.Core;
+using thebrokenscript.Content.Events;
+using thebrokenscript.Core;
 
-namespace TheBrokenScript.Common.Commands;
+namespace thebrokenscript.Common.Commands;
 
 public class randomEventCommand : ModCommand // COMMANDS ARE RUNNING IN CLIENT CONTEXT, DO NOT FORGET, I SPENT TWO DAYS BEFORE I FIGURED THIS BULLSHIT
 {
@@ -29,7 +29,7 @@ public class randomEventCommand : ModCommand // COMMANDS ARE RUNNING IN CLIENT C
 		var modEvent = enabled[Main.rand.Next(enabled.Count)];
 		if (Main.netMode == NetmodeID.MultiplayerClient)
 		{
-			ModPacket packet = ModContent.GetInstance<TheBrokenScript>().GetPacket();
+			ModPacket packet = ModContent.GetInstance<thebrokenscript>().GetPacket();
 			packet.Write((byte)ModPacketHandler.PacketType.TriggerEvent);
 			packet.Send(); // Client to Server, parameters irrelevant
 			caller.Reply($"Asking Server for a random event.");

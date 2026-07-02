@@ -2,11 +2,11 @@
 using System.Linq;
 using Terraria;
 using Terraria.ModLoader;
-using TheBrokenScript.Common;
-using TheBrokenScript.Common.EventHelpers;
-using TheBrokenScript.Content.Events;
-using TheBrokenScript.Content.NPCs.Possessor;
-namespace TheBrokenScript.Core;
+using thebrokenscript.Common;
+using thebrokenscript.Common.EventHelpers;
+using thebrokenscript.Content.Events;
+using thebrokenscript.Content.NPCs.Possessor;
+namespace thebrokenscript.Core;
 public static class ModPacketHandler
 {
 	internal enum PacketType : byte
@@ -62,7 +62,7 @@ public static class ModPacketHandler
 				SubworldCounter.NowhereEntryCooldown = 5;
 				break;
 			default:
-				ModContent.GetInstance<TheBrokenScript>().Logger.WarnFormat("The Broken Script: Unknown packet type: {0}", packet);
+				ModContent.GetInstance<thebrokenscript>().Logger.WarnFormat("The Broken Script: Unknown packet type: {0}", packet);
 				break;
 		}
 	}

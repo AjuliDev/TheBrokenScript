@@ -7,9 +7,9 @@ using System.Threading;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using TheBrokenScript.Common;
-using TheBrokenScript.Content.Tiles.Null;
-namespace TheBrokenScript.Content.NPCs.Obliteration;
+using thebrokenscript.Common;
+using thebrokenscript.Content.Tiles.Null;
+namespace thebrokenscript.Content.NPCs.Obliteration;
 
 public class Obliteration : ModNPC
 {
@@ -79,7 +79,7 @@ public class Obliteration : ModNPC
 	}
 	public override void Load()
 	{
-		BoneTexture = ModContent.Request<Texture2D>("TheBrokenScript/Content/NPCs/Obliteration/Obliteration_Tentacle");
+		BoneTexture = ModContent.Request<Texture2D>("thebrokenscript/Content/NPCs/Obliteration/Obliteration_Tentacle");
 	}
 	public override void Unload()
 	{

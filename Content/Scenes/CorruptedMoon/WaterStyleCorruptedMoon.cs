@@ -3,8 +3,8 @@ using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
 using Terraria;
 using Terraria.ModLoader;
-using TheBrokenScript.Core;
-namespace TheBrokenScript.Content.Scenes.CorruptedMoon;
+using thebrokenscript.Core;
+namespace thebrokenscript.Content.Scenes.CorruptedMoon;
 public class WaterStyleCorruptedMoon : ModWaterStyle
 {
 	public override int GetDropletGore() => Terraria.ID.GoreID.WaterDripBlood;
@@ -22,7 +22,7 @@ public class WaterStyleCorruptedMoon : ModWaterStyle
 	{
 		return (byte)Main.rand.Next(3);
 	}
-	public override string BlockTexture => "TheBrokenScript/Content/Scenes/CorruptedMoon/CorruptedMoonWaterStyle_Block";
-	public override string SlopeTexture => "TheBrokenScript/Content/Scenes/CorruptedMoon/CorruptedMoonWaterStyle_Slope";
-	public override string Texture => "TheBrokenScript/Content/Scenes/CorruptedMoon/CorruptedMoonWaterStyle";
+	public override string BlockTexture => "thebrokenscript/Content/Scenes/CorruptedMoon/CorruptedMoonWaterStyle_Block";
+	public override string SlopeTexture => "thebrokenscript/Content/Scenes/CorruptedMoon/CorruptedMoonWaterStyle_Slope";
+	public override string Texture => "thebrokenscript/Content/Scenes/CorruptedMoon/CorruptedMoonWaterStyle";
 }

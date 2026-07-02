@@ -5,19 +5,19 @@ using System;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using TheBrokenScript.Common;
-using TheBrokenScript.Core;
-namespace TheBrokenScript.Content.NPCs.SiluetR2;
+using thebrokenscript.Common;
+using thebrokenscript.Core;
+namespace thebrokenscript.Content.NPCs.SiluetR2;
 public class SiluetR2 : ModNPC
 {
-	public override string Texture => "TheBrokenScript/Common/Textures/transparent_pixel";
+	public override string Texture => "thebrokenscript/Common/Textures/transparent_pixel";
 	private static Asset<Texture2D> npcSprite;
 	float timer = 0f;
 	float offset = 0f;
 	float soundTimer = 0f;
 	public override void Load()
 	{
-		npcSprite = ModContent.Request<Texture2D>("TheBrokenScript/Content/NPCs/SiluetR2/SiluetR2", AssetRequestMode.AsyncLoad);
+		npcSprite = ModContent.Request<Texture2D>("thebrokenscript/Content/NPCs/SiluetR2/SiluetR2", AssetRequestMode.AsyncLoad);
 	}
 	public override void Unload()
 	{

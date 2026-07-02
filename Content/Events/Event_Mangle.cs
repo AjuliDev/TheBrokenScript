@@ -3,9 +3,9 @@ using System.Linq;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using TheBrokenScript.Content.Tiles.Corrupted;
-using TheBrokenScript.Core;
-namespace TheBrokenScript.Content.Events;
+using thebrokenscript.Content.Tiles.Corrupted;
+using thebrokenscript.Core;
+namespace thebrokenscript.Content.Events;
 
 public class Event_Mangle : IModEvent
 {
@@ -73,7 +73,7 @@ public class Event_Mangle : IModEvent
 		// Play Sound
 		if (Main.dedServ)
 		{
-			ModPacket packet = ModContent.GetInstance<TheBrokenScript>().GetPacket();
+			ModPacket packet = ModContent.GetInstance<thebrokenscript>().GetPacket();
 			packet.Write((byte)ModPacketHandler.PacketType.RequestCaveSound);
 			packet.Write(playerTileX);
 			packet.Write(playerTileY);

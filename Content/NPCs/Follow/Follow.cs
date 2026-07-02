@@ -7,8 +7,8 @@ using Terraria;
 using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
-using TheBrokenScript.Common;
-namespace TheBrokenScript.Content.NPCs.Follow;
+using thebrokenscript.Common;
+namespace thebrokenscript.Content.NPCs.Follow;
 public class Follow : ModNPC
 {
 	public static Asset<Texture2D> BoneTexture;
@@ -171,7 +171,7 @@ public class Follow : ModNPC
 	}
 	public override void Load()
 	{
-		BoneTexture = ModContent.Request<Texture2D>("TheBrokenScript/Content/NPCs/Follow/Follow_Tentacle");
+		BoneTexture = ModContent.Request<Texture2D>("thebrokenscript/Content/NPCs/Follow/Follow_Tentacle");
 	}
 	public override void Unload()
 	{

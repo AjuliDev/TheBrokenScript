@@ -1,8 +1,8 @@
 ﻿using Terraria;
 using Terraria.ModLoader;
-using TheBrokenScript.Content.Scenes.CorruptedMoon;
-using TheBrokenScript.Content.Tiles.Voidstone;
-namespace TheBrokenScript.Content.Subworlds.Nowhere;
+using thebrokenscript.Content.Scenes.CorruptedMoon;
+using thebrokenscript.Content.Tiles.Voidstone;
+namespace thebrokenscript.Content.Subworlds.Nowhere;
 public class VoidstoneBiome : ModBiome
 {
 	public override ModWaterStyle WaterStyle => ModContent.GetInstance<WaterStyleCorruptedMoon>();

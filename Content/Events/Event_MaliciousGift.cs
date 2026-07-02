@@ -4,10 +4,10 @@ using Terraria;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
-using TheBrokenScript.Common.EventHelpers;
-using TheBrokenScript.Core;
+using thebrokenscript.Common.EventHelpers;
+using thebrokenscript.Core;
 
-namespace TheBrokenScript.Content.Events;
+namespace thebrokenscript.Content.Events;
 public class Event_MaliciousGift : IModEvent
 {
 	public bool IsEnabled(ServerConfig config) => config.Event_Faint;

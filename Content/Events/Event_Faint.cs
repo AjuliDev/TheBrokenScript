@@ -4,9 +4,9 @@ using Terraria;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
-using TheBrokenScript.Common.EventHelpers;
-using TheBrokenScript.Core;
-namespace TheBrokenScript.Content.Events;
+using thebrokenscript.Common.EventHelpers;
+using thebrokenscript.Core;
+namespace thebrokenscript.Content.Events;
 
 public class Event_Faint : IModEvent
 {
@@ -28,7 +28,7 @@ public class Event_Faint : IModEvent
 				return;
 			}
 			int targetPlayer = activePlayers[Main.rand.Next(activePlayers.Count)];
-			ModPacket packet = ModContent.GetInstance<TheBrokenScript>().GetPacket();
+			ModPacket packet = ModContent.GetInstance<thebrokenscript>().GetPacket();
 			packet.Write((byte)ModPacketHandler.PacketType.FaintCastToClient);
 			packet.Send(targetPlayer, -1);
 			Terraria.Chat.ChatHelper.BroadcastChatMessage(

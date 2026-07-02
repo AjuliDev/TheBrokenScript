@@ -2,7 +2,7 @@
 using System;
 using Terraria;
 using Terraria.Graphics.CameraModifiers;
-namespace TheBrokenScript.Common;
+namespace thebrokenscript.Common;
 public class CameraSnapTo : ICameraModifier
 {
 	public Vector2 TargetPosition;

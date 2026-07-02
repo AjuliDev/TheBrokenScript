@@ -9,8 +9,8 @@ using Terraria.GameContent;
 using Terraria.GameContent.Generation;
 using Terraria.ID;
 using Terraria.WorldBuilding;
-using TheBrokenScript.Core;
-namespace TheBrokenScript.Content.Subworlds.Nowhere;
+using thebrokenscript.Core;
+namespace thebrokenscript.Content.Subworlds.Nowhere;
 public class Nowhere : Subworld
 {
 	public static float UIRotation = 0f;

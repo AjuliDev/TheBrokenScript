@@ -1,11 +1,11 @@
 ﻿using SubworldLibrary;
 using Terraria;
 using Terraria.ModLoader;
-using TheBrokenScript.Content.NPCs.Follow;
-using TheBrokenScript.Content.NPCs.SiluetR2;
-using TheBrokenScript.Content.Subworlds.Nowhere;
-using TheBrokenScript.Core;
-namespace TheBrokenScript.Common;
+using thebrokenscript.Content.NPCs.Follow;
+using thebrokenscript.Content.NPCs.SiluetR2;
+using thebrokenscript.Content.Subworlds.Nowhere;
+using thebrokenscript.Core;
+namespace thebrokenscript.Common;
 public class TBSModPlayer : ModPlayer
 {
 	public override void ModifyHitByNPC(NPC npc, ref Player.HurtModifiers modifiers)

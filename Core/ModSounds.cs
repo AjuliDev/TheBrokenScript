@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ModLoader;
-namespace TheBrokenScript.Core;
+namespace thebrokenscript.Core;
 public class ModSounds : ModSystem
 {
 	public static HashSet<string> ActiveSounds = new HashSet<string>();

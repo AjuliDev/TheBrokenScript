@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Terraria;
 using Terraria.ModLoader;
-namespace TheBrokenScript.Core;
+namespace thebrokenscript.Core;
 public class ModAssets : ModSystem
 {
 	public static Dictionary<string, Asset<Texture2D>> Textures { get; private set; } = new();

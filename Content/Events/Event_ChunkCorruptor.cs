@@ -7,10 +7,10 @@ using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
-using TheBrokenScript.Common.EventHelpers;
-using TheBrokenScript.Core;
+using thebrokenscript.Common.EventHelpers;
+using thebrokenscript.Core;
 
-namespace TheBrokenScript.Content.Events;
+namespace thebrokenscript.Content.Events;
 public class Event_ChunkCorruptor : IModEvent
 {
 	public bool IsEnabled(ServerConfig config) => config.Event_Faint;
@@ -216,7 +216,7 @@ public class Event_ChunkCorruptor : IModEvent
 		// Play Sound
 		if (Main.dedServ)
 		{
-			ModPacket packet = ModContent.GetInstance<TheBrokenScript>().GetPacket();
+			ModPacket packet = ModContent.GetInstance<thebrokenscript>().GetPacket();
 			packet.Write((byte)ModPacketHandler.PacketType.RequestCaveSound);
 			packet.Write(chunkX);
 			packet.Write(chunkY);

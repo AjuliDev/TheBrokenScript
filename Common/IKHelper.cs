@@ -1,7 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
-namespace TheBrokenScript.Common;
+namespace thebrokenscript.Common;
 public class IKHelper
 {
 	public static float ReturnFirstTilePixelCoordinateBelow(float x_row, float y_column, float range)

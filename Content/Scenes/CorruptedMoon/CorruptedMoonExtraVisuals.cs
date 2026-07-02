@@ -2,9 +2,9 @@
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ModLoader;
-using TheBrokenScript.Core;
+using thebrokenscript.Core;
 
-namespace TheBrokenScript.Content.Scenes.CorruptedMoon;
+namespace thebrokenscript.Content.Scenes.CorruptedMoon;
 public class CorruptedMoonExtraVisuals : ModSystem
 {
 	private static float SmoothX, SmoothY;

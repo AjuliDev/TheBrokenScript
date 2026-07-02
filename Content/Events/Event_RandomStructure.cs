@@ -5,10 +5,10 @@ using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
-using TheBrokenScript.Content.Subworlds.Nowhere;
-using TheBrokenScript.Core;
+using thebrokenscript.Content.Subworlds.Nowhere;
+using thebrokenscript.Core;
 
-namespace TheBrokenScript.Content.Events;
+namespace thebrokenscript.Content.Events;
 
 public class Event_RandomStructure : IModEvent
 {
@@ -105,7 +105,7 @@ public class Event_RandomStructure : IModEvent
 		}
 
 		string filePath = $"Common/Structures/Random/{structureToSpawn.Name}";
-		var mod = ModContent.GetInstance<TheBrokenScript>();
+		var mod = ModContent.GetInstance<thebrokenscript>();
 
 		Point16 structureDimensions = StructureHelper.API.Generator.GetStructureDimensions(filePath, mod);
 
@@ -135,7 +135,7 @@ public class Event_RandomStructure : IModEvent
 		// Play Sound
 		if (Main.dedServ)
 		{
-			ModPacket packet = ModContent.GetInstance<TheBrokenScript>().GetPacket();
+			ModPacket packet = ModContent.GetInstance<thebrokenscript>().GetPacket();
 			packet.Write((byte)ModPacketHandler.PacketType.RequestCaveSound);
 			packet.Write(structureX);
 			packet.Write(structureY);

@@ -5,9 +5,9 @@ using System.Collections.Generic;
 using Terraria;
 using Terraria.ModLoader;
 using Terraria.UI;
-using TheBrokenScript.Core;
+using thebrokenscript.Core;
 
-namespace TheBrokenScript.Common.EventHelpers;
+namespace thebrokenscript.Common.EventHelpers;
 public class KernelPanicModSystem : ModSystem
 {
 	public static bool IsActive = false;

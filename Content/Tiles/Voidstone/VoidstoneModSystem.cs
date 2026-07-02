@@ -3,9 +3,9 @@ using System;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using TheBrokenScript.Content.Subworlds.Nowhere;
+using thebrokenscript.Content.Subworlds.Nowhere;
 
-namespace TheBrokenScript.Content.Tiles.Voidstone;
+namespace thebrokenscript.Content.Tiles.Voidstone;
 
 public class VoidstoneModSystem : ModSystem
 {

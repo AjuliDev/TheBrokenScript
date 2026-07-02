@@ -1,0 +1,128 @@
+Mods: {
+	thebrokenscript: {
+		Biomes: {
+			VoidstoneBiome: {
+				DisplayName: Voidstone Biome
+				TownNPCDialogueName: the Voidstone Biome
+			}
+		}
+
+		Items: {
+			RedObsidianItem: {
+				DisplayName: Red Obsidian Item
+				Tooltip: ""
+			}
+
+			VoidstoneItem: {
+				DisplayName: Voidstone Item
+				Tooltip: ""
+			}
+		}
+
+		NPCs: {
+			Execute.DisplayName: Execute
+			Follow.DisplayName: Follow
+			Obliteration.DisplayName: Obliteration
+			Observe.DisplayName: Observe
+			Possessor.DisplayName: Possessor
+			SiluetR2.DisplayName: Siluet R2
+			SubAnomalyOne.DisplayName: Sub Anomaly One
+		}
+
+		Configs: {
+			ClientConfig: {
+				DisplayName: Client Config
+				Headers.Rendering: Rendering Header
+
+				ShowCorruptionVisionAssist: {
+					Label: Show Corruption Vision Assist
+					Tooltip: ""
+				}
+
+				CorruptionVisionAssistHeight: {
+					Label: Corruption Vision Assist Height
+					Tooltip: ""
+				}
+
+				PosterizationShader: {
+					Label: Posterization Shader
+					Tooltip: ""
+				}
+
+				TileAmbientParticles: {
+					Label: Tile Ambient Particles
+					Tooltip: ""
+				}
+			}
+
+			ServerConfig: {
+				DisplayName: Server Config
+
+				Headers: {
+					Events: Events Header
+					Entities: Entities Header
+				}
+
+				DisableRandomEvents: {
+					Label: Disable Random Events
+					Tooltip: ""
+				}
+
+				MinimumRandomEventCooldown: {
+					Label: Minimum Random Event Cooldown
+					Tooltip: ""
+				}
+
+				MaximumRandomEventCooldown: {
+					Label: Maximum Random Event Cooldown
+					Tooltip: ""
+				}
+
+				Event_GiftChest: {
+					Label: Event_ Gift Chest
+					Tooltip: ""
+				}
+
+				Event_Mangle: {
+					Label: Event_ Mangle
+					Tooltip: ""
+				}
+
+				Event_KernelPanic: {
+					Label: Event_ Kernel Panic
+					Tooltip: ""
+				}
+
+				Event_Faint: {
+					Label: Event_ Faint
+					Tooltip: ""
+				}
+
+				Event_MaliciousGift: {
+					Label: Event_ Malicious Gift
+					Tooltip: ""
+				}
+
+				Event_ChunkCorruptor: {
+					Label: Event_ Chunk Corruptor
+					Tooltip: ""
+				}
+
+				Event_RandomStructure: {
+					Label: Event_ Random Structure
+					Tooltip: ""
+				}
+
+				MaximumEntitiesAllowed: {
+					Label: Maximum Entities Allowed
+					Tooltip: ""
+				}
+
+				EntitySpawnRate: {
+					Label: Entity Spawn Rate
+					Tooltip: ""
+				}
+			}
+		}
+	}
+}

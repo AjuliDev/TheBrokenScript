@@ -3,7 +3,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
-namespace TheBrokenScript.Core;
+namespace thebrokenscript.Core;
 public class ModState : ModSystem
 {
 	#region Definitions
@@ -217,7 +217,7 @@ public class ModState : ModSystem
 		{
 			return;
 		}
-		ModPacket packet = ModContent.GetInstance<TheBrokenScript>().GetPacket();
+		ModPacket packet = ModContent.GetInstance<thebrokenscript>().GetPacket();
 		packet.Write((byte)ModPacketHandler.PacketType.SyncWorldData);
 		packet.Write((int)worldData.WorldState);
 		packet.Write(worldData.MoonData.RandomCorruptedID);

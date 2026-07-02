@@ -1,6 +1,6 @@
 displayName = The Broken Script: Aftermath
-name = TheBrokenScript
+name = thebrokenscript
 author = AjuliDev
-version = 0.23.1
+version = 0.23.1.1
 buildIgnore = Source/*
 modReferences = StructureHelper, SubworldLibrary
